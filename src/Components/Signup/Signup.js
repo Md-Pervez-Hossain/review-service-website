@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Signup = () => {
-  const { user, createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ const Signup = () => {
         if (user?.uid) {
           alert("user SuccessFully created");
           form.reset();
-          navigate("/");
+          navigate("/home");
         }
         console.log(user);
       })
@@ -49,6 +49,7 @@ const Signup = () => {
               name="username"
               id="username"
               placeholder="Username"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -61,6 +62,7 @@ const Signup = () => {
               name="photoURL"
               id="photoURL"
               placeholder="photoURL"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -73,6 +75,7 @@ const Signup = () => {
               name="email"
               id="email"
               placeholder="email"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -85,6 +88,7 @@ const Signup = () => {
               name="password"
               id="password"
               placeholder="Password"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
