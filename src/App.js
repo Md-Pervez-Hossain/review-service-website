@@ -28,7 +28,7 @@ function App() {
         {
           path: "/allservice",
           element: <AllFoodsService></AllFoodsService>,
-          loader: () => fetch("http://localhost:5000/addservice"),
+          loader: () => fetch("http://localhost:5000/addservices"),
         },
         {
           path: "/allservice/:id",

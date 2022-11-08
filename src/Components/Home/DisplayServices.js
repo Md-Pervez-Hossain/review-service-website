@@ -19,7 +19,7 @@ const DisplayServices = ({ serviceInfo }) => {
         <p className="font-bold text-xl mb-3">
           Price : <span className="font-normal text-xl mb-3"> {foodPrice}</span>
         </p>
-        <p>{foodDescription.slice(0, 100)}</p>
+        <p>{foodDescription.slice(0, 100) + " ..."}</p>
         <Link to={`/allservice/${_id}`}>
           <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
             Details
