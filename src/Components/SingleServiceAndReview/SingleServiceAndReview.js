@@ -67,8 +67,8 @@ const SingleServiceAndReview = () => {
   };
 
   return (
-    <div className="w-9/12 mx-auto my-16">
-      <div className="grid grid-cols-2 gap-10">
+    <div className="md:w-9/12 mx-auto my-16 p-4">
+      <div className="grid md:grid-cols-2 gap-10">
         <div>
           <div>
             <img src={photoURL} alt="" />
