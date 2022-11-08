@@ -15,7 +15,7 @@ const Header = () => {
       <div className="w-9/12 mx-auto font-bold text-2xl ">
         <div className="flex items-center justify-between flex-col md:flex-row">
           <div>
-            <Link to="/">Food Logo</Link>
+            <Link to="/home">Food Logo</Link>
           </div>
           <div className="flex gap-5">
             {user?.uid ? (
