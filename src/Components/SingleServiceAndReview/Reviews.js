@@ -1,11 +1,9 @@
 import React from "react";
-import { FaEdit, FaTrashAlt, IconName } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const Reviews = ({ reviews }) => {
+const Reviews = ({ reviews, handleDelete }) => {
   const { _id, ratings, review, displayName, photoURL } = reviews;
-  const handleDelete = (_id) => {
-    console.log(_id);
-  };
+
   return (
     <div className="bg-gray-100 p-5 shadow-xl my-5">
       <div className="flex justify-between items-center">

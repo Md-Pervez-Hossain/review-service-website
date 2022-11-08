@@ -1,9 +1,10 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import { Link } from "react-router-dom";
 
 const DisplayServices = ({ serviceInfo }) => {
-  const { foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
+  const { _id, foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
   return (
     <div className="bg-yellow-300 border p-4 ">
       <div>
@@ -19,9 +20,11 @@ const DisplayServices = ({ serviceInfo }) => {
           Price : <span className="font-normal text-xl mb-3"> {foodPrice}</span>
         </p>
         <p>{foodDescription.slice(0, 100)}</p>
-        <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
-          Details
-        </button>
+        <Link to={`/allservice/${_id}`}>
+          <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
+            Details
+          </button>
+        </Link>
       </div>
     </div>
   );
