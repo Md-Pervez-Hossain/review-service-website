@@ -8,14 +8,14 @@ const SingleServiceAndReview = () => {
   //   const [reviews, setReviews] = useState("");
   const { user } = useContext(AuthContext);
   const singleService = useLoaderData();
-  const { foodDescription, foodName, foodPrice, photoURL } = singleService;
+  const { _id, foodDescription, foodName, foodPrice, photoURL } = singleService;
 
   useEffect(() => {
     fetch("http://localhost:5000/reviews")
       .then((res) => res.json())
       .then((data) => {
         setAllReviews(data);
-        console.log(data);
+        // console.log(data);
       });
   }, [allReviews]);
 
@@ -27,6 +27,7 @@ const SingleServiceAndReview = () => {
     const photoURL = user?.photoURL;
     const review = form.review.value;
     const reviewData = {
+      foodService: _id,
       ratings,
       displayName,
       photoURL,
@@ -69,6 +70,11 @@ const SingleServiceAndReview = () => {
             <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
               Order Now
             </button>
+            <Link to="/allservice">
+              <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white ml-3">
+                Order Cancel
+              </button>
+            </Link>
           </div>
         </div>
         <div>

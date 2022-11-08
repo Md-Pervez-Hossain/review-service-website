@@ -39,7 +39,7 @@ const Home = () => {
           <hr className="my-5" />
         </div>
         <div className="grid md:grid-cols-3 gap-10 p-4">
-          {foodService?.map((serviceInfo) => (
+          {foodService?.slice(0, 3).map((serviceInfo) => (
             <DisplayServices
               key={serviceInfo._id}
               serviceInfo={serviceInfo}
