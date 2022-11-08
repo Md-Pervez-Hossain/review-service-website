@@ -26,6 +26,7 @@ const Header = () => {
                 <Link to="/home">Home</Link>{" "}
                 <Link to="/addservice">Add Service</Link>{" "}
                 <Link to="/myreviews">My Reviews</Link>{" "}
+                <Link to="/Blog">Blog</Link>
                 <Link to="/" onClick={handleLogOut}>
                   Signout
                 </Link>
@@ -37,7 +38,8 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
+                <Link to="/Blog">Blog</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Signup</Link>
               </>

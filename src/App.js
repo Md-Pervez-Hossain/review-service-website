@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import AddService from "./Components/AddService/AddService";
 import AllFoodsService from "./Components/AllFoodsService/AllFoodsService";
+import Blog from "./Components/Blog/Blog";
 import Home from "./Components/Home/Home";
 import Main from "./Components/Layout/Main";
 import Login from "./Components/Login/Login";
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/signup",
           element: <Signup></Signup>,
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
         },
         {
           path: "/myreviews",
