@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <div className="bg-red-600 py-8 text-white">
       <div className="w-9/12 mx-auto font-bold text-2xl ">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-col md:flex-row">
           <div>
             <Link to="/">Food Logo</Link>
           </div>
