@@ -1,10 +1,13 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Login = () => {
   const { user, userLogin, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const hanleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,6 +20,7 @@ const Login = () => {
           alert("SuccessFully Log In");
           form.reset();
         }
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => console.error(error));
@@ -28,7 +32,6 @@ const Login = () => {
       .catch(() => {});
   };
 
-  console.log(user);
   return (
     <div>
       <div className="w-2/5 mx-auto my-16 bg-gray-100 shadow-2xl p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">

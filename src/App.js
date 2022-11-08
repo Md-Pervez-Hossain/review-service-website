@@ -5,6 +5,7 @@ import AllFoodsService from "./Components/AllFoodsService/AllFoodsService";
 import Home from "./Components/Home/Home";
 import Main from "./Components/Layout/Main";
 import Login from "./Components/Login/Login";
+import PrivateRoutes from "./Components/Routes/PrivateRoutes";
 import Signup from "./Components/Signup/Signup";
 import SingleServiceAndReview from "./Components/SingleServiceAndReview/SingleServiceAndReview";
 
@@ -44,7 +45,11 @@ function App() {
         },
         {
           path: "/addservice",
-          element: <AddService></AddService>,
+          element: (
+            <PrivateRoutes>
+              <AddService></AddService>
+            </PrivateRoutes>
+          ),
         },
       ],
     },

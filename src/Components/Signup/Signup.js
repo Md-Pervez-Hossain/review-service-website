@@ -1,11 +1,12 @@
 import React from "react";
 import { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Signup = () => {
   const { user, createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -23,6 +24,7 @@ const Signup = () => {
         if (user?.uid) {
           alert("user SuccessFully created");
           form.reset();
+          navigate("/");
         }
         console.log(user);
       })
