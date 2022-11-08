@@ -25,6 +25,7 @@ const SingleServiceAndReview = () => {
       photoURL,
       review,
       email,
+      foodName,
     };
     // setReviews(reviewData);
     console.log(reviewData);
@@ -53,20 +54,6 @@ const SingleServiceAndReview = () => {
         // console.log(data);
       });
   }, [allReviews]);
-
-  const handleDelete = (_id) => {
-    const agree = window.confirm("Are You Sure ? You Want To Delete");
-    if (agree) {
-      fetch(`http://localhost:5000/reviews/${_id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => console.error(error));
-    }
-  };
 
   return (
     <div className="md:w-9/12 mx-auto my-16 p-4">
@@ -132,11 +119,7 @@ const SingleServiceAndReview = () => {
           )}
           <div className="my-10">
             {allReviews?.map((reviews) => (
-              <Reviews
-                key={reviews._id}
-                reviews={reviews}
-                handleDelete={handleDelete}
-              ></Reviews>
+              <Reviews key={reviews._id} reviews={reviews}></Reviews>
             ))}
           </div>
         </div>

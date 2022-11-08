@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import DisplayMyReviews from "./DisplayMyReviews";
 
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
@@ -14,9 +15,39 @@ const MyReviews = () => {
       });
   }, [user?.email, setMyRevies]);
 
+  const handleDelete = (_id) => {
+    const agree = window.confirm("Are You Sure ? You Want To Delete");
+    if (agree) {
+      fetch(`http://localhost:5000/reviews/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("Review Delated");
+            const remaining = myReviews.filter((review) => review._id !== _id);
+            setMyRevies(remaining);
+          }
+          console.log(data);
+        })
+        .catch((error) => console.error(error));
+    }
+  };
+
   return (
-    <div>
-      <h2>my reviews :{myReviews.length}</h2>
+    <div className="w-9/12 mx-auto my-16">
+      <h2 className="text-3xl font-bold text-center mb-8">
+        My Reviews : {myReviews.length}
+      </h2>
+      <div className="grid md:grid-cols-3 gap-10">
+        {myReviews.map((myReview) => (
+          <DisplayMyReviews
+            key={myReview._id}
+            myReview={myReview}
+            handleDelete={handleDelete}
+          ></DisplayMyReviews>
+        ))}
+      </div>
     </div>
   );
 };

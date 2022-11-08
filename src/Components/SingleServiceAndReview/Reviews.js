@@ -1,5 +1,4 @@
 import React from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const Reviews = ({ reviews, handleDelete }) => {
   const { _id, ratings, review, displayName, photoURL } = reviews;
@@ -12,10 +11,6 @@ const Reviews = ({ reviews, handleDelete }) => {
           <h2 className="text-2xl font-bold">{displayName}</h2>
           <h2 className="text-xl font-semibold"> Review : {review}</h2>
           <p>Rating : {ratings}</p>
-        </div>
-        <div className="flex gap-5 cursor-pointer">
-          <FaTrashAlt onClick={() => handleDelete(_id)}></FaTrashAlt>
-          <FaEdit></FaEdit>
         </div>
       </div>
     </div>
