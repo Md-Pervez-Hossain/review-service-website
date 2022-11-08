@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import Contact from "../Contact/Contact";
+import DiscountBanner from "../DiscountBanner/DiscountBanner";
 import FoodBlog from "../FoodBlog/FoodBlog";
+import TrustedClient from "../TrustedClient/TrustedClient";
 import DisplayServices from "./DisplayServices";
 
 const Home = () => {
@@ -9,8 +12,8 @@ const Home = () => {
     <div className="md:w-9/12 mx-auto  p-4 my-16 ">
       <div className="flex items-center flex-col-reverse bg-yellow-300 md:flex-row gap-16 py-10 px-4 md:py-24 md:px-10 justify-between">
         <div>
-          <h2 className="md:text-7xl text-4xl font-bold">
-            My Tasty and Delicious Foods
+          <h2 className="md:text-7xl text-4xl font-bold leading-relaxed">
+            My Tasty and <span className="text-red-600"> Delicious</span> Foods
           </h2>
           <p className="text-2xl font-normal my-3">
             Enjoy Your Favourite Food And Feel The Test
@@ -33,7 +36,8 @@ const Home = () => {
             My food Services
           </h2>
           <p className="text-center text-2xl font-normal my-5 ">
-            Feel The Test and Enjoy My Delicious Foods
+            Feel The Test and Enjoy My{" "}
+            <span className="text-red-600">Delicious</span> Foods
           </p>
           <hr className="my-5" />
           <hr className="my-5" />
@@ -46,16 +50,28 @@ const Home = () => {
             ></DisplayServices>
           ))}
         </div>
-        <div className="text-center my-8">
+        <div className="text-center my-16">
           <Link to="/allservice">
-            <button className="bg-red-600 font-bold text-xl px-5 py-3 text-white">
+            <button
+              type="button"
+              className="px-8 py-3 font-bold text-3xl border rounded border-red-600  dark:text-gray-100"
+            >
               All Foods
             </button>
           </Link>
         </div>
         <div>
+          <DiscountBanner></DiscountBanner>
+        </div>
+        <div>
           <FoodBlog></FoodBlog>
         </div>
+      </div>
+      <div>
+        <TrustedClient></TrustedClient>
+      </div>
+      <div>
+        <Contact></Contact>
       </div>
     </div>
   );

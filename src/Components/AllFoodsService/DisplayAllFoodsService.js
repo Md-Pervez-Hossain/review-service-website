@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const DisplayAllFoodsService = ({ foodService }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = foodService;
   return (
-    <div className="bg-yellow-300  p-4">
+    <div className="bg-gray-100 shadow-xl  p-4">
       <div>
         <img src={photoURL} alt="" className="w-full h-72" />
       </div>

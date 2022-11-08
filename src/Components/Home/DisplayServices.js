@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const DisplayServices = ({ serviceInfo }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
   return (
-    <div className="bg-yellow-300 border p-4 ">
+    <div className="bg-gray-100 p-4 shadow-xl ">
       <div>
         <PhotoProvider>
           <PhotoView src={photoURL}>
