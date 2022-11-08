@@ -4,6 +4,7 @@ import DisplayAllFoodsService from "./DisplayAllFoodsService";
 
 const AllFoodsService = () => {
   const foodsService = useLoaderData();
+  document.title = "All Foods Service Page";
   console.log(foodsService);
   return (
     <div className="md:w-9/12 mx-auto p-4">

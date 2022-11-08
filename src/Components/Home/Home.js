@@ -8,6 +8,7 @@ import DisplayServices from "./DisplayServices";
 
 const Home = () => {
   const foodService = useLoaderData();
+  document.title = "Home Page";
   return (
     <div className="md:w-9/12 mx-auto  p-4 my-16 ">
       <div className="flex items-center flex-col-reverse bg-yellow-300 md:flex-row gap-16 py-10 px-4 md:py-24 md:px-10 justify-between">
@@ -70,6 +71,7 @@ const Home = () => {
       <div>
         <TrustedClient></TrustedClient>
       </div>
+
       <div>
         <Contact></Contact>
       </div>

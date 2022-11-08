@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const AddService = () => {
+  document.title = "Add Service Page";
   const [foodService, setFoodService] = useState("");
 
   const handleAddFoodService = (event) => {

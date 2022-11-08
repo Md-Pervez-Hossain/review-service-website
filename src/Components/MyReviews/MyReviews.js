@@ -3,6 +3,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import DisplayMyReviews from "./DisplayMyReviews";
 
 const MyReviews = () => {
+  document.title = "MyReview Page";
   const { user } = useContext(AuthContext);
   const [myReviews, setMyRevies] = useState([]);
 

@@ -5,6 +5,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Login = () => {
   const { userLogin, googleSignIn } = useContext(AuthContext);
+  document.title = "Login Page";
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -28,7 +29,9 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {})
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch(() => {});
   };
 

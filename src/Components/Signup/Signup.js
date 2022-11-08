@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Signup = () => {
+  document.title = "Signup Page";
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (event) => {
