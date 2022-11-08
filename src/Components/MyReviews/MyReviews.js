@@ -36,18 +36,25 @@ const MyReviews = () => {
 
   return (
     <div className="w-9/12 mx-auto my-16">
-      <h2 className="text-3xl font-bold text-center mb-8">
-        My Reviews : {myReviews.length}
-      </h2>
-      <div className="grid md:grid-cols-3 gap-10">
-        {myReviews.map((myReview) => (
-          <DisplayMyReviews
-            key={myReview._id}
-            myReview={myReview}
-            handleDelete={handleDelete}
-          ></DisplayMyReviews>
-        ))}
-      </div>
+      {myReviews.length <= 0 ? (
+        <>
+          <p className="text-4xl font-bold text-red-600 text-center">
+            No reviews were added
+          </p>
+        </>
+      ) : (
+        <>
+          <div className="grid md:grid-cols-3 gap-10">
+            {myReviews.map((myReview) => (
+              <DisplayMyReviews
+                key={myReview._id}
+                myReview={myReview}
+                handleDelete={handleDelete}
+              ></DisplayMyReviews>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

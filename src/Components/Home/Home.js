@@ -56,7 +56,7 @@ const Home = () => {
               type="button"
               className="px-8 py-3 font-bold text-3xl border rounded border-red-600  dark:text-gray-100"
             >
-              All Foods
+              See All
             </button>
           </Link>
         </div>

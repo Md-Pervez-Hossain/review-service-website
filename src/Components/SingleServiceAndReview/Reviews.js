@@ -1,7 +1,7 @@
 import React from "react";
 
 const Reviews = ({ reviews, handleDelete }) => {
-  const { _id, ratings, review, displayName, photoURL } = reviews;
+  const { ratings, review, displayName, photoURL } = reviews;
 
   return (
     <div className="bg-gray-100 p-5 shadow-xl my-5">

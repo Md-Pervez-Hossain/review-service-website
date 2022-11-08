@@ -53,6 +53,7 @@ const AddService = () => {
               name="foodName"
               id="foodName"
               placeholder="Food Service Name"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -70,6 +71,7 @@ const AddService = () => {
               name="photoURL"
               id="photoURL"
               placeholder="Photo URL"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -87,6 +89,7 @@ const AddService = () => {
               name="foodPrice"
               id="foodPrice"
               placeholder="Food Price"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -105,6 +108,7 @@ const AddService = () => {
               cols="30"
               rows="10"
               placeholder="Food Description"
+              required
               className="w-full  rounded-md px-5 py-8"
             ></textarea>
           </div>

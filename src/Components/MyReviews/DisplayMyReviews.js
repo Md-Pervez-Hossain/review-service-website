@@ -2,7 +2,7 @@ import React from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const DisplayMyReviews = ({ myReview, handleDelete }) => {
-  const { _id, review, ratings, foodName, photoURL } = myReview;
+  const { _id, review, ratings, foodName } = myReview;
   return (
     <div className=" p-6 rounded-md shadow-md dark:bg-gray-900 bg-gray-100 dark:text-gray-50">
       <div className="mt-6 mb-2">

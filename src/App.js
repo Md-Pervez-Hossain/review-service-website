@@ -46,7 +46,11 @@ function App() {
         },
         {
           path: "/myreviews",
-          element: <MyReviews></MyReviews>,
+          element: (
+            <PrivateRoutes>
+              <MyReviews></MyReviews>
+            </PrivateRoutes>
+          ),
         },
         {
           path: "/addservice",

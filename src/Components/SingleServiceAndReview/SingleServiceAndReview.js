@@ -108,7 +108,7 @@ const SingleServiceAndReview = () => {
           ) : (
             <>
               <p className="text-3xl font-bold text-red-600">
-                Please login to give review
+                Please login to Add a Review
               </p>
               <Link to="/login">
                 <button className="bg-red-600  font-bold text-xl px-5 py-3 my-3 text-white">
