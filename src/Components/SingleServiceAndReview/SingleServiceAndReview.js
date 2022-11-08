@@ -34,6 +34,21 @@ const SingleServiceAndReview = () => {
     };
     // setReviews(reviewData);
     console.log(reviewData);
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          alert("Review Added");
+          event.target.reset();
+        }
+        console.log(data);
+      });
   };
 
   return (
