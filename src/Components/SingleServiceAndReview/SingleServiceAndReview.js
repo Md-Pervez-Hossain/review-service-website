@@ -90,6 +90,7 @@ const SingleServiceAndReview = () => {
                     name="ratings"
                     placeholder="Rating"
                     className="w-full mb-5 px-5 py-5"
+                    required
                   />
                   <textarea
                     name="review"
@@ -98,6 +99,7 @@ const SingleServiceAndReview = () => {
                     rows="10"
                     className="w-full px-5 py-5"
                     placeholder="Review"
+                    required
                   ></textarea>
                   <button className="bg-red-600  font-bold text-xl px-5 py-3 my-3 text-white">
                     Submit Review
