@@ -49,6 +49,7 @@ const Login = () => {
               name="email"
               id="email"
               placeholder="email"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
@@ -61,6 +62,7 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="Password"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
             <div className="flex justify-end text-xs dark:text-gray-400">
@@ -69,7 +71,7 @@ const Login = () => {
               </Link>
             </div>
           </div>
-          <button className="block w-full p-3 text-center bg-white rounded-sm dark:text-gray-900 dark:bg-violet-400">
+          <button className="block w-full p-3 text-center bg-red-600 font-bold text-white text-xl rounded-sm dark:text-gray-900 dark:bg-violet-400">
             Sign in
           </button>
         </form>

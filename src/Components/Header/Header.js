@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,9 +16,11 @@ const Header = () => {
       <div className="w-9/12 mx-auto font-bold text-2xl ">
         <div className="flex items-center justify-between flex-col md:flex-row">
           <div>
-            <Link to="/home">Food Logo</Link>
+            <Link to="/home">
+              <img src={logo} alt="" className="h-16" />
+            </Link>
           </div>
-          <div className="flex gap-5">
+          <div className="flex gap-5 items-center">
             {user?.uid ? (
               <>
                 <Link to="/home">Home</Link>{" "}
@@ -26,6 +29,11 @@ const Header = () => {
                 <Link to="/" onClick={handleLogOut}>
                   Signout
                 </Link>
+                <img
+                  src={user?.photoURL}
+                  alt=""
+                  className="h-16 rounded-full"
+                />
               </>
             ) : (
               <>
