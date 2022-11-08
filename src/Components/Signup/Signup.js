@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Signup = () => {
-  const { user, createUser } = useContext(AuthContext);
+  const { user, createUser, updateUserProfile } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -17,8 +17,14 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        if (user.uid) {
+        updateUserProfile(username, photoURL)
+          .then(() => {})
+          .catch(() => {});
+        if (user?.uid) {
+          alert("user SuccessFully created");
+          form.reset();
         }
+        console.log(user);
       })
       .catch((error) => console.error(error));
     console.log(username, photoURL, email, password);
