@@ -5,7 +5,7 @@ import Reviews from "./Reviews";
 
 const SingleServiceAndReview = () => {
   const [allReviews, setAllReviews] = useState([]);
-  const [review, setReview] = useState("");
+  //   const [reviews, setReviews] = useState("");
   const { user } = useContext(AuthContext);
   const singleService = useLoaderData();
   const { foodDescription, foodName, foodPrice, photoURL } = singleService;
@@ -17,14 +17,14 @@ const SingleServiceAndReview = () => {
         setAllReviews(data);
         console.log(data);
       });
-  }, []);
+  }, [allReviews]);
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const ratings = form.ratings.value;
-    const displayName = form.displayName.value;
-    const photoURL = form.photoURL.value;
+    const displayName = user?.displayName;
+    const photoURL = user?.photoURL;
     const review = form.review.value;
     const reviewData = {
       ratings,
@@ -32,24 +32,8 @@ const SingleServiceAndReview = () => {
       photoURL,
       review,
     };
-    setReview(reviewData);
-    console.log(review);
-    fetch("http://localhost:5000/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          alert("Review Added");
-          event.target.reset();
-        }
-        setReview(data);
-        console.log(data);
-      });
+    // setReviews(reviewData);
+    console.log(reviewData);
   };
 
   return (
@@ -89,6 +73,7 @@ const SingleServiceAndReview = () => {
                     placeholder="displayName"
                     className="w-full mb-5 px-5 py-5"
                     defaultValue={user?.displayName}
+                    readOnly
                   />
                   <input
                     type="text"
@@ -96,6 +81,7 @@ const SingleServiceAndReview = () => {
                     placeholder="Photo URL"
                     className="w-full mb-5 px-5 py-5"
                     defaultValue={user?.photoURL}
+                    readOnly
                   />
                   <textarea
                     name="review"
