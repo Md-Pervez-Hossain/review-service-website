@@ -1,6 +1,10 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EditMyReview = () => {
+  const myReviews = useLoaderData();
+
   const handleMyReviewSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,10 +16,33 @@ const EditMyReview = () => {
       review,
       time,
     };
+
+    fetch(`http://localhost:5000/reviewss/${myReviews._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(myReviewData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Review Updated", { autoClose: 500 });
+          form.reset();
+        }
+        console.log(data);
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
+      });
+
     console.log(myReviewData);
   };
   return (
     <div className="w-1/2 mx-auto bg-gray-100 p-8 my-16">
+      <h2 className="text-2xl font-bold">
+        Update Review : {myReviews.foodName}
+      </h2>
       <form onSubmit={handleMyReviewSubmit}>
         <div className="bg-gray-100 p-10">
           <input
@@ -23,6 +50,7 @@ const EditMyReview = () => {
             name="ratings"
             placeholder="Rating"
             className="w-full mb-5 px-5 py-5"
+            defaultValue={myReviews.ratings}
             required
           />
           <textarea
@@ -33,6 +61,7 @@ const EditMyReview = () => {
             className="w-full px-5 py-5"
             placeholder="Review"
             required
+            defaultValue={myReviews.review}
           ></textarea>
           <button className="bg-red-600  font-bold text-xl px-5 py-3 my-3 text-white">
             Submit Review

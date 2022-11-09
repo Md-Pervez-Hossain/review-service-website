@@ -49,6 +49,8 @@ function App() {
         {
           path: "/reviewss/:id",
           element: <EditMyReview></EditMyReview>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/reviewss/${params.id}`),
         },
         {
           path: "/myreviews",
