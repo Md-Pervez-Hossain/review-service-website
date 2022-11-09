@@ -8,13 +8,16 @@ const Contact = () => {
   const handleFeedbackSubmit = (event) => {
     event.preventDefault();
     // setIsLoading(true);
-    fetch("http://localhost:5000/feedback", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(feedBack),
-    })
+    fetch(
+      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(feedBack),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

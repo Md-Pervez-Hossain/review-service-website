@@ -12,13 +12,16 @@ const AddService = () => {
   const handleAddFoodService = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    fetch("http://localhost:5000/addservice", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(foodService),
-    })
+    fetch(
+      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(foodService),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

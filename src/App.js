@@ -22,18 +22,26 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
-          loader: () => fetch("http://localhost:5000/addservice"),
+          loader: () =>
+            fetch(
+              "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
+            ),
         },
         {
           path: "/allservice",
           element: <AllFoodsService></AllFoodsService>,
-          loader: () => fetch("http://localhost:5000/addservices"),
+          loader: () =>
+            fetch(
+              "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices"
+            ),
         },
         {
           path: "/allservice/:id",
           element: <SingleServiceAndReview></SingleServiceAndReview>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/addservice/${params.id}`),
+            fetch(
+              `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice/${params.id}`
+            ),
         },
         {
           path: "/login",
@@ -50,13 +58,18 @@ function App() {
         {
           path: "/feedback",
           element: <ClientFeedback></ClientFeedback>,
-          loader: () => fetch("http://localhost:5000/feedback"),
+          loader: () =>
+            fetch(
+              "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback"
+            ),
         },
         {
           path: "/reviewss/:id",
           element: <EditMyReview></EditMyReview>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/reviewss/${params.id}`),
+            fetch(
+              `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss/${params.id}`
+            ),
         },
         {
           path: "/myreviews",

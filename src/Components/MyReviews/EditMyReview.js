@@ -17,13 +17,16 @@ const EditMyReview = () => {
       time,
     };
 
-    fetch(`http://localhost:5000/reviewss/${myReviews._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(myReviewData),
-    })
+    fetch(
+      `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss/${myReviews._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(myReviewData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

@@ -32,13 +32,16 @@ const SingleServiceAndReview = () => {
     };
     // setReviews(reviewData);
     console.log(reviewData);
-    fetch("http://localhost:5000/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reviewData),
-    })
+    fetch(
+      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reviewData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
@@ -53,7 +56,9 @@ const SingleServiceAndReview = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?foodService=${_id}`)
+    fetch(
+      `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews?foodService=${_id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAllReviews(data);
