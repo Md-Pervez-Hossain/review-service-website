@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Reviews from "./Reviews";
 
@@ -41,10 +42,13 @@ const SingleServiceAndReview = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          alert("Review Added");
+          toast.success("Review Added", { autoClose: 500 });
           event.target.reset();
         }
         console.log(data);
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
       });
   };
 

@@ -6,6 +6,7 @@ import Blog from "./Components/Blog/Blog";
 import Home from "./Components/Home/Home";
 import Main from "./Components/Layout/Main";
 import Login from "./Components/Login/Login";
+import EditMyReview from "./Components/MyReviews/EditMyReview";
 import MyReviews from "./Components/MyReviews/MyReviews";
 import PrivateRoutes from "./Components/Routes/PrivateRoutes";
 import Signup from "./Components/Signup/Signup";
@@ -44,6 +45,10 @@ function App() {
         {
           path: "/blog",
           element: <Blog></Blog>,
+        },
+        {
+          path: "/reviewss/:id",
+          element: <EditMyReview></EditMyReview>,
         },
         {
           path: "/myreviews",

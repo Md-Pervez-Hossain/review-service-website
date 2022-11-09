@@ -35,6 +35,9 @@ const MyReviews = () => {
         .catch((error) => console.error(error));
     }
   };
+  const handleMyReviewEdit = (_id) => {
+    console.log(_id);
+  };
 
   return (
     <div className="w-9/12 mx-auto my-16">
@@ -52,6 +55,7 @@ const MyReviews = () => {
                 key={myReview._id}
                 myReview={myReview}
                 handleDelete={handleDelete}
+                handleMyReviewEdit={handleMyReviewEdit}
               ></DisplayMyReviews>
             ))}
           </>

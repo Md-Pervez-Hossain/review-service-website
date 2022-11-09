@@ -1,7 +1,8 @@
 import React from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const DisplayMyReviews = ({ myReview, handleDelete }) => {
+const DisplayMyReviews = ({ myReview, handleDelete, handleMyReviewEdit }) => {
   const { _id, review, ratings, foodName } = myReview;
   return (
     <div className=" p-6 rounded-md shadow-md dark:bg-gray-900 bg-gray-100 dark:text-gray-50">
@@ -17,7 +18,10 @@ const DisplayMyReviews = ({ myReview, handleDelete }) => {
 
       <div className="flex gap-5 cursor-pointer">
         <FaTrashAlt onClick={() => handleDelete(_id)}></FaTrashAlt>
-        <FaEdit></FaEdit>
+        <Link to={`/reviewss/${_id}`}>
+          {" "}
+          <FaEdit onClick={() => handleMyReviewEdit(_id)}></FaEdit>
+        </Link>
       </div>
     </div>
   );

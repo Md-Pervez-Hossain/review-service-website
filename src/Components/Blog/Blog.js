@@ -1,6 +1,7 @@
 import React from "react";
 
 const Blog = () => {
+  document.title = "Blog Page";
   return (
     <div className="md:w-9/12 mx-auto my-16 p-4">
       <div className="bg-gray-100 p-5 mb-5">
