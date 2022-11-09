@@ -53,7 +53,7 @@ const SingleServiceAndReview = () => {
         setAllReviews(data);
         // console.log(data);
       });
-  }, [allReviews]);
+  }, [allReviews, _id]);
 
   return (
     <div className="md:w-9/12 mx-auto my-16 p-4">

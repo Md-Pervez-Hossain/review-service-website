@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const DisplayAllFoodsService = ({ foodService }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = foodService;
+
   return (
     <div className="bg-gray-100 shadow-xl  p-4">
       <div>

@@ -1,12 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+
+import { FadeLoader } from "react-spinners";
 
 const AddService = () => {
   document.title = "Add Service Page";
   const [foodService, setFoodService] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddFoodService = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     fetch("http://localhost:5000/addservice", {
       method: "POST",
       headers: {
@@ -17,10 +22,14 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          alert("Service Added");
+          toast.success("Service added", { autoClose: 500 });
           event.target.reset();
+          setIsLoading(false);
         }
         console.log(data);
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
       });
   };
 
@@ -114,9 +123,24 @@ const AddService = () => {
             ></textarea>
           </div>
 
-          <button className="block w-full p-3 text-center rounded-md bg-red-600 text-white font-bold text-2xl dark:text-gray-900 dark:bg-violet-400">
-            Submit
-          </button>
+          {isLoading ? (
+            <>
+              <FadeLoader
+                color={"#f40b66"}
+                loading={isLoading}
+                size={50}
+                className="text-center"
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            </>
+          ) : (
+            <>
+              <button className="block w-full p-3 text-center rounded-md bg-red-600 text-white font-bold text-2xl dark:text-gray-900 dark:bg-violet-400">
+                Submit
+              </button>
+            </>
+          )}
         </form>
       </div>
     </div>

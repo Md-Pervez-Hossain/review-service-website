@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
+import { FadeLoader } from "react-spinners";
 
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Signup = () => {
+  const [isLoading, setIsLoading] = useState(false);
   document.title = "Signup Page";
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setIsLoading(true);
     const form = event.target;
     const username = form.username.value;
     const photoURL = form.photoURL.value;
@@ -19,17 +22,21 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        setIsLoading(false);
         updateUserProfile(username, photoURL)
           .then(() => {})
           .catch(() => {});
         if (user?.uid) {
-          alert("user SuccessFully created");
+          toast.success("User SuccessFully Created", { autoClose: 500 });
           form.reset();
-          navigate("/home");
+          navigate("/");
         }
         console.log(user);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
+        setIsLoading(false);
+      });
     console.log(username, photoURL, email, password);
   };
 
@@ -93,9 +100,23 @@ const Signup = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
-          <button className="block w-full p-3 text-center font-bold bg-red-600 text-white text-xl rounded-sm dark:text-gray-900 dark:bg-violet-400">
-            Sign up
-          </button>
+          {isLoading ? (
+            <>
+              <FadeLoader
+                color={"#f40b66"}
+                loading={isLoading}
+                size={50}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            </>
+          ) : (
+            <>
+              <button className="block w-full p-3 text-center font-bold bg-red-600 text-white text-xl rounded-sm dark:text-gray-900 dark:bg-violet-400">
+                Sign up
+              </button>
+            </>
+          )}
         </form>
 
         <p className="text-xs text-center sm:px-6 dark:text-gray-400">

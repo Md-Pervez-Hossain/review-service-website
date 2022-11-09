@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Contact from "../Contact/Contact";
 import DiscountBanner from "../DiscountBanner/DiscountBanner";
 import FoodBlog from "../FoodBlog/FoodBlog";
 import TrustedClient from "../TrustedClient/TrustedClient";
 import DisplayServices from "./DisplayServices";
+// import { FadeLoader } from "react-spinners";
 
 const Home = () => {
+  // const [isLoading, setIsLoading] = useState(false);
+
   const foodService = useLoaderData();
   document.title = "Home Page";
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, [1000]);
+  // }, []);
+
   return (
     <div className="md:w-9/12 mx-auto  p-4 my-16 ">
       <div className="flex items-center flex-col-reverse bg-yellow-300 md:flex-row gap-16 py-10 px-4 md:py-24 md:px-10 justify-between">
@@ -51,6 +62,7 @@ const Home = () => {
             ></DisplayServices>
           ))}
         </div>
+
         <div className="text-center my-16">
           <Link to="/allservice">
             <button
@@ -61,6 +73,7 @@ const Home = () => {
             </button>
           </Link>
         </div>
+
         <div>
           <DiscountBanner></DiscountBanner>
         </div>
@@ -68,9 +81,7 @@ const Home = () => {
           <FoodBlog></FoodBlog>
         </div>
       </div>
-      <div>
-        <TrustedClient></TrustedClient>
-      </div>
+      <div>{/* <TrustedClient></TrustedClient> */}</div>
 
       <div>
         <Contact></Contact>
