@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Contact from "../Contact/Contact";
 import DiscountBanner from "../DiscountBanner/DiscountBanner";
 import FoodBlog from "../FoodBlog/FoodBlog";
-import TrustedClient from "../TrustedClient/TrustedClient";
+
 import DisplayServices from "./DisplayServices";
 // import { FadeLoader } from "react-spinners";
 
 const Home = () => {
-  // const [isLoading, setIsLoading] = useState(false);
-
   const foodService = useLoaderData();
   document.title = "Home Page";
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, [1000]);
-  // }, []);
 
   return (
     <div className="md:w-9/12 mx-auto  p-4 my-16 ">
