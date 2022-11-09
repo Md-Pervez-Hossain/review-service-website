@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import DisplayMyReviews from "./DisplayMyReviews";
@@ -26,13 +27,15 @@ const MyReviews = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
-            alert("Review Delated");
+            toast.warning("Review Deleted", { autoClose: 500 });
             const remaining = myReviews.filter((review) => review._id !== _id);
             setMyReviews(remaining);
           }
           console.log(data);
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+          toast.error(error.message, { autoClose: 500 });
+        });
     }
   };
   const handleMyReviewEdit = (_id) => {

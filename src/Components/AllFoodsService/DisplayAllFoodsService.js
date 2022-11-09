@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DisplayAllFoodsService = ({ foodService }) => {
+const DisplayAllFoodsService = ({ foodService, handleDeleteService }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = foodService;
 
   return (
@@ -14,10 +14,18 @@ const DisplayAllFoodsService = ({ foodService }) => {
         <p className="font-bold text-xl mb-3">
           Price : <span className="font-normal text-xl mb-3"> {foodPrice}</span>
         </p>
-        <p>{foodDescription.slice(0, 100) + "..."} </p>
+        <p>{foodDescription?.slice(0, 100) + "..."} </p>
         <Link to={`/allservice/${_id}`}>
           <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
             Details
+          </button>
+        </Link>
+        <Link>
+          <button
+            onClick={() => handleDeleteService(_id)}
+            className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white md:ml-3"
+          >
+            Delete
           </button>
         </Link>
       </div>

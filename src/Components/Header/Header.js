@@ -30,6 +30,7 @@ const Header = () => {
               <>
                 <Link to="/addservice">Add Service</Link>{" "}
                 <Link to="/myreviews">My Reviews</Link>{" "}
+                <Link to="/feedback">Client Feddback</Link>{" "}
                 <Link to="/Blog">Blog</Link>
                 <Link to="/" onClick={handleLogOut}>
                   Signout
