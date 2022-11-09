@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import DisplayMyReviews from "./DisplayMyReviews";
 
 const MyReviews = () => {
   document.title = "MyReview Page";
   const { user } = useContext(AuthContext);
-  const [myReviews, setMyRevies] = useState([]);
+  const [myReviews, setMyReviews] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviewss?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setMyRevies(data);
+        setMyReviews(data);
       });
-  }, [user?.email, setMyRevies]);
+  }, [user?.email, setMyReviews]);
 
   const handleDelete = (_id) => {
     const agree = window.confirm("Are You Sure ? You Want To Delete");
@@ -28,7 +28,7 @@ const MyReviews = () => {
           if (data.deletedCount > 0) {
             alert("Review Delated");
             const remaining = myReviews.filter((review) => review._id !== _id);
-            setMyRevies(remaining);
+            setMyReviews(remaining);
           }
           console.log(data);
         })
@@ -38,25 +38,25 @@ const MyReviews = () => {
 
   return (
     <div className="w-9/12 mx-auto my-16">
-      {myReviews.length <= 0 ? (
-        <>
-          <p className="text-4xl font-bold text-red-600 text-center">
-            No reviews were added
-          </p>
-        </>
-      ) : (
-        <>
-          <div className="grid md:grid-cols-3 gap-10">
-            {myReviews.map((myReview) => (
+      <div className="grid md:grid-cols-3 gap-10">
+        {myReviews.length <= 0 ? (
+          <>
+            <p className="text-2xl font-bold text-red-600 text-center">
+              No reviews were added
+            </p>
+          </>
+        ) : (
+          <>
+            {myReviews?.map((myReview) => (
               <DisplayMyReviews
                 key={myReview._id}
                 myReview={myReview}
                 handleDelete={handleDelete}
               ></DisplayMyReviews>
             ))}
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

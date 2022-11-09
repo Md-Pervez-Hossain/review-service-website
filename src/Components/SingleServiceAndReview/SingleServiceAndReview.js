@@ -18,6 +18,7 @@ const SingleServiceAndReview = () => {
     const email = user?.email;
     const photoURL = user?.photoURL;
     const review = form.review.value;
+    const time = new Date().getTime();
     const reviewData = {
       foodService: _id,
       ratings,
@@ -26,6 +27,7 @@ const SingleServiceAndReview = () => {
       review,
       email,
       foodName,
+      time,
     };
     // setReviews(reviewData);
     console.log(reviewData);
