@@ -12,7 +12,7 @@ const ClientFeedback = () => {
         </>
       ) : (
         <>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-10 p-4">
             {clientFeedBack.map((feedBack) => (
               <DisplayClientFeedback
                 key={feedBack._id}
