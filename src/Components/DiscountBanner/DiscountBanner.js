@@ -13,7 +13,7 @@ const DiscountBanner = () => {
           <Link
             to="/allservice"
             rel="noreferrer noopener"
-            className="px-5 mt-4 lg:mt-0 py-3 text-2xl font-bold rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400"
+            className="px-5 mt-4 lg:mt-0 py-3 text-2xl font-bold text-white text-decoration-none rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400"
           >
             Order Now
           </Link>

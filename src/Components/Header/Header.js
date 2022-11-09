@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -96,56 +95,10 @@ const Header = () => {
                     </>
                   )}
                 </div>
-
-                {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown> */}
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
-
-        {/* <div className="flex items-center justify-between flex-col md:flex-row">
-          <div>
-            <Link to="/">
-              <img src={logo} alt="" className="h-16" />
-            </Link>
-          </div>
-          <div className="flex gap-5 items-center">
-            {user?.uid ? (
-              <>
-                <Link to="/addservice">Add Service</Link>{" "}
-                <Link to="/myreviews">My Reviews</Link>{" "}
-                <Link to="/feedback">Client Feddback</Link>{" "}
-                <Link to="/Blog">Blog</Link>
-                <Link to="/" onClick={handleLogOut}>
-                  Signout
-                </Link>
-                <img
-                  src={user?.photoURL}
-                  alt=""
-                  className="h-16 rounded-full"
-                />
-              </>
-            ) : (
-              <>
-                <Link to="/Blog">Blog</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
-              </>
-            )}
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ const Home = () => {
           <Link to="/allservice">
             <button
               type="button"
-              className="px-8 py-3 font-bold text-3xl border rounded border-red-600  dark:text-gray-100"
+              className="px-8 py-3 font-bold text-3xl border rounded border-red-600 text-red-600  dark:text-gray-100"
             >
               See All
             </button>

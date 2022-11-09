@@ -142,7 +142,7 @@ const Footer = () => {
       </footer> */}
       <div className="md:w-9/12 mx-auto text-center">
         <p className="text-xl">Thank you</p>
-        <p>© Copyright 2033. All Rights Reserved to food valey</p>
+        <p>© Copyright 2022. All Rights Reserved to food valey</p>
       </div>
     </div>
   );
