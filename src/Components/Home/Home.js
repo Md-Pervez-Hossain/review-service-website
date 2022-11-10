@@ -3,28 +3,39 @@ import { Link, useLoaderData } from "react-router-dom";
 import Contact from "../Contact/Contact";
 import DiscountBanner from "../DiscountBanner/DiscountBanner";
 import FoodBlog from "../FoodBlog/FoodBlog";
+// import { FadeLoader } from "react-spinners";
 
 import DisplayServices from "./DisplayServices";
+import { toast } from "react-toastify";
 // import { FadeLoader } from "react-spinners";
 
 const Home = () => {
   // const foodService = useLoaderData();
   const [foodsService, setFoodsService] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+
   // console.log(foodService);
   useEffect(() => {
+    // setIsLoading(true);
     fetch(
       "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
     )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setFoodsService(foodsService);
+        setFoodsService(data);
+        // setIsLoading(false);
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
+        // setIsLoading(false);
       });
-  });
+  }, []);
   document.title = "Home Page";
-
+  console.log(foodsService);
   return (
     <div className="md:w-9/12 mx-auto  p-4 my-16 ">
+      {" "}
       <div className="flex items-center flex-col-reverse bg-yellow-300 md:flex-row gap-16 py-10 px-4 md:py-24 md:px-10 justify-between">
         <div>
           <h2 className="md:text-7xl text-4xl font-bold leading-relaxed">
@@ -84,7 +95,6 @@ const Home = () => {
           <FoodBlog></FoodBlog>
         </div>
       </div>
-
       <div>
         <Contact></Contact>
       </div>
