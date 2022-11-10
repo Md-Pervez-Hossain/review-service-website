@@ -28,8 +28,11 @@ const MyReviews = () => {
       .then((data) => {
         console.log(data);
         setMyReviews(data);
+      })
+      .catch((error) => {
+        toast.error(error.message);
       });
-  }, [user?.email, setMyReviews]);
+  }, [user?.email, setMyReviews, logOut]);
 
   const handleDelete = (_id) => {
     const agree = window.confirm("Are You Sure ? You Want To Delete");
