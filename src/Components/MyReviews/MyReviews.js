@@ -11,7 +11,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     fetch(
-      `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss?email=${user?.email}`
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss?email=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +24,7 @@ const MyReviews = () => {
     const agree = window.confirm("Are You Sure ? You Want To Delete");
     if (agree) {
       fetch(
-        `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews/${_id}`,
+        `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews/${_id}`,
         {
           method: "DELETE",
         }

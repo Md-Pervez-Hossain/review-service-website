@@ -11,7 +11,7 @@ const AllFoodsService = () => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     fetch(
-      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/allservices"
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices"
     )
       .then((res) => res.json())
       .then((data) => {

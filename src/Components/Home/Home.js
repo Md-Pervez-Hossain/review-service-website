@@ -13,12 +13,12 @@ const Home = () => {
   // console.log(foodService);
   useEffect(() => {
     fetch(
-      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
     )
       .then((res) => res.json())
       .then((data) => {
-        setFoodsService(foodsService);
         console.log(data);
+        setFoodsService(foodsService);
       });
   });
   document.title = "Home Page";
@@ -84,7 +84,6 @@ const Home = () => {
           <FoodBlog></FoodBlog>
         </div>
       </div>
-      <div>{/* <TrustedClient></TrustedClient> */}</div>
 
       <div>
         <Contact></Contact>

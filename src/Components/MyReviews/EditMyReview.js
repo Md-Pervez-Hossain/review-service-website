@@ -18,7 +18,7 @@ const EditMyReview = () => {
     };
 
     fetch(
-      `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss/${myReviews._id}`,
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss/${myReviews._id}`,
       {
         method: "PUT",
         headers: {

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-
 import { FadeLoader } from "react-spinners";
 
 const AddService = () => {
@@ -13,7 +12,7 @@ const AddService = () => {
     event.preventDefault();
     setIsLoading(true);
     fetch(
-      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice",
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice",
       {
         method: "POST",
         headers: {

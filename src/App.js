@@ -40,7 +40,7 @@ function App() {
           element: <SingleServiceAndReview></SingleServiceAndReview>,
           loader: ({ params }) =>
             fetch(
-              `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice/${params.id}`
+              `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice/${params.id}`
             ),
         },
         {
@@ -68,7 +68,7 @@ function App() {
           element: <EditMyReview></EditMyReview>,
           loader: ({ params }) =>
             fetch(
-              `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss/${params.id}`
+              `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss/${params.id}`
             ),
         },
         {

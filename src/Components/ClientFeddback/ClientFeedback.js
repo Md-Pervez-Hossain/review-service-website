@@ -7,7 +7,7 @@ const ClientFeedback = () => {
   const [feedBacks, setFeedBacks] = useState([]);
   useEffect(() => {
     fetch(
-      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback"
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback"
     )
       .then((res) => res.json())
       .then((data) => {

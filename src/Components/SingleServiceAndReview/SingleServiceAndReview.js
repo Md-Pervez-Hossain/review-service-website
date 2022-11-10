@@ -33,7 +33,7 @@ const SingleServiceAndReview = () => {
     // setReviews(reviewData);
     console.log(reviewData);
     fetch(
-      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews",
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews",
       {
         method: "POST",
         headers: {
@@ -57,7 +57,7 @@ const SingleServiceAndReview = () => {
 
   useEffect(() => {
     fetch(
-      `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews?foodService=${_id}`
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviews?foodService=${_id}`
     )
       .then((res) => res.json())
       .then((data) => {
