@@ -6,14 +6,25 @@ import DisplayMyReviews from "./DisplayMyReviews";
 
 const MyReviews = () => {
   document.title = "MyReview Page";
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [myReviews, setMyReviews] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss?email=${user?.email}`
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/reviewss?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Baerer ${localStorage.getItem("token")}`,
+          "content-type": "application/json",
+        },
+      }
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 400 || res.status === 403) {
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => {
         console.log(data);
         setMyReviews(data);

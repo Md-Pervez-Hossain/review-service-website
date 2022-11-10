@@ -24,6 +24,30 @@ const Login = () => {
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+        console.log(currentUser);
+
+        fetch(
+          `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/jwt`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("token", data.token);
+          })
+          .catch((error) => {
+            toast.error(error.message, { autoClose: 500 });
+          });
+
         setIsLoading(false);
         if (user?.uid) {
           toast.success("SuccessFully Log in", { autoClose: 500 });
