@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+
 import DisplayAllFoodsService from "./DisplayAllFoodsService";
 import { FadeLoader } from "react-spinners";
 import { toast } from "react-toastify";
@@ -17,6 +17,9 @@ const AllFoodsService = () => {
       .then((data) => {
         console.log(data);
         setFooodService(data);
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
       });
   }, []);
 
@@ -26,30 +29,6 @@ const AllFoodsService = () => {
       setIsLoading(false);
     }, [1000]);
   }, []);
-
-  const handleDeleteService = (_id) => {
-    const agree = window.confirm("Are You Sure ? You Want to Delete");
-    if (agree) {
-      fetch(
-        `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices/${_id}`,
-        {
-          method: "DELETE",
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            toast.success("Successfully Deleted", { autoClose: 500 });
-            const remaining = fooodService.filter((food) => food._id !== _id);
-            setFooodService(remaining);
-          }
-          console.log(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
 
   return (
     <div className="md:w-9/12 mx-auto p-4">
@@ -73,7 +52,6 @@ const AllFoodsService = () => {
               <DisplayAllFoodsService
                 key={foodService._id}
                 foodService={foodService}
-                handleDeleteService={handleDeleteService}
               ></DisplayAllFoodsService>
             ))}
           </div>

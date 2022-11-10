@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+
 import DisplayClientFeedback from "./DisplayClientFeedback";
 
 const ClientFeedback = () => {
-  const clientFeedBack = useLoaderData();
   const [feedBacks, setFeedBacks] = useState([]);
   useEffect(() => {
     fetch(

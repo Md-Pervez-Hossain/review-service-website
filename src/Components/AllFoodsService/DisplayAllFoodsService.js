@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DisplayAllFoodsService = ({ foodService, handleDeleteService }) => {
+const DisplayAllFoodsService = ({ foodService }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = foodService;
   return (
     <div className="bg-gray-100 shadow-xl  p-4">
@@ -17,14 +17,6 @@ const DisplayAllFoodsService = ({ foodService, handleDeleteService }) => {
         <Link to={`/allservice/${_id}`}>
           <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
             Details
-          </button>
-        </Link>
-        <Link>
-          <button
-            onClick={() => handleDeleteService(_id)}
-            className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white md:ml-3"
-          >
-            Delete
           </button>
         </Link>
       </div>
