@@ -42,7 +42,7 @@ const EditMyReview = () => {
     console.log(myReviewData);
   };
   return (
-    <div className="w-1/2 mx-auto bg-gray-100 p-8 my-16">
+    <div className="md:w-1/2 mx-auto bg-gray-100 p-4 my-16">
       <h2 className="text-2xl font-bold">
         Update Review : {myReviews.foodName}
       </h2>
