@@ -33,6 +33,7 @@ const AddService = () => {
       })
       .catch((error) => {
         toast.error(error.message, { autoClose: 500 });
+        setIsLoading(false);
       });
   };
 

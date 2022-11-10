@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Contact from "../Contact/Contact";
 import DiscountBanner from "../DiscountBanner/DiscountBanner";
@@ -8,7 +8,19 @@ import DisplayServices from "./DisplayServices";
 // import { FadeLoader } from "react-spinners";
 
 const Home = () => {
-  const foodService = useLoaderData();
+  // const foodService = useLoaderData();
+  const [foodsService, setFoodsService] = useState([]);
+  // console.log(foodService);
+  useEffect(() => {
+    fetch(
+      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setFoodsService(foodsService);
+        console.log(data);
+      });
+  });
   document.title = "Home Page";
 
   return (
@@ -46,7 +58,7 @@ const Home = () => {
           <hr className="my-5" />
         </div>
         <div className="grid md:grid-cols-3 gap-10 p-4">
-          {foodService?.map((serviceInfo) => (
+          {foodsService?.map((serviceInfo) => (
             <DisplayServices
               key={serviceInfo._id}
               serviceInfo={serviceInfo}

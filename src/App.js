@@ -22,18 +22,18 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
-          loader: () =>
-            fetch(
-              "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
-            ),
+          // loader: () =>
+          //   fetch(
+          //     "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
+          //   ),
         },
         {
           path: "/allservice",
           element: <AllFoodsService></AllFoodsService>,
-          loader: () =>
-            fetch(
-              "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices"
-            ),
+          // loader: () =>
+          //   fetch(
+          //     "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices"
+          //   ),
         },
         {
           path: "/allservice/:id",
@@ -58,10 +58,10 @@ function App() {
         {
           path: "/feedback",
           element: <ClientFeedback></ClientFeedback>,
-          loader: () =>
-            fetch(
-              "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback"
-            ),
+          // loader: () =>
+          //   fetch(
+          //     "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback"
+          //   ),
         },
         {
           path: "/reviewss/:id",

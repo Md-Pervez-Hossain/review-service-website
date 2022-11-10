@@ -5,11 +5,21 @@ import { FadeLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
 const AllFoodsService = () => {
-  const foodsService = useLoaderData();
-  const [fooodService, setFooodService] = useState(foodsService);
+  // const foodsService = useLoaderData();
+  const [fooodService, setFooodService] = useState([]);
   document.title = "All Foods Service Page";
-  console.log(foodsService);
   const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    fetch(
+      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/allservices"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFooodService(data);
+      });
+  }, []);
+
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
@@ -20,9 +30,12 @@ const AllFoodsService = () => {
   const handleDeleteService = (_id) => {
     const agree = window.confirm("Are You Sure ? You Want to Delete");
     if (agree) {
-      fetch(`http://localhost:5000/addservices/${_id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices/${_id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
