@@ -95,12 +95,12 @@ const SingleServiceAndReview = () => {
           {user?.uid ? (
             <>
               <form onSubmit={handleReviewSubmit}>
-                <div className="bg-gray-100 p-10">
+                <div className="bg-gray-100 p-5">
                   <input
                     type="text"
                     name="ratings"
                     placeholder="Rating"
-                    className="w-full mb-5 px-5 py-5"
+                    className="w-full mb-5 px-5 py-3"
                     required
                   />
                   <textarea

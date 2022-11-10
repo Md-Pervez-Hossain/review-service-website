@@ -31,7 +31,7 @@ const AllFoodsService = () => {
     const agree = window.confirm("Are You Sure ? You Want to Delete");
     if (agree) {
       fetch(
-        `b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices/${_id}`,
+        `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices/${_id}`,
         {
           method: "DELETE",
         }
