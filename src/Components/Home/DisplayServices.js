@@ -7,25 +7,53 @@ const DisplayServices = ({ serviceInfo }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
 
   return (
-    <div className="bg-gray-100 p-4 shadow-xl ">
+    <div className=" p-4 shadow-xl ">
       <div>
         <PhotoProvider>
           <PhotoView src={photoURL}>
-            <img src={photoURL} alt="" className="w-full h-72" />
+            <div
+              style={{
+                backgroundImage: `url(${photoURL})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                height: "200px",
+              }}
+            ></div>
           </PhotoView>
         </PhotoProvider>
       </div>
       <div>
-        <h2 className="text-3xl font-bold my-3">{foodName}</h2>
-        <p className="font-bold text-xl mb-3">
-          Price : <span className="font-normal text-xl mb-3"> {foodPrice}</span>
-        </p>
-        <p>{foodDescription.slice(0, 100) + " ..."}</p>
-        <Link to={`/allservice/${_id}`}>
-          <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
-            Details
-          </button>
-        </Link>
+        <div>
+          <h2 className="text-xl font-bold mt-3 mb-2 ">
+            {foodName?.length >= 10 ? (
+              <>{`${foodName.slice(0, 10)} ...`}</>
+            ) : (
+              <>{foodName}</>
+            )}
+          </h2>
+          <div className="mb-2">
+            <p className="font-bold mb-0  ">
+              Price : $ <span className="font-normal "> {foodPrice}</span>
+            </p>
+            <p>
+              {foodDescription.length >= 70 ? (
+                <>
+                  <p className="mb-0">
+                    {foodDescription?.slice(0, 70) + " ..."}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="mb-0">{foodDescription}</p>
+                </>
+              )}
+            </p>
+          </div>
+          <Link to={`/allservice/${_id}`}>
+            <button className=" font-bold text-red-600 ">Read More </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

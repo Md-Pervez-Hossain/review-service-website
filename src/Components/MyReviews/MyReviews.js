@@ -3,11 +3,13 @@ import { toast } from "react-toastify";
 
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import DisplayMyReviews from "./DisplayMyReviews";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const MyReviews = () => {
   document.title = "MyReview Page";
   const { user, logOut } = useContext(AuthContext);
   const [myReviews, setMyReviews] = useState([]);
+  console.log(myReviews);
 
   useEffect(() => {
     fetch(
@@ -63,7 +65,7 @@ const MyReviews = () => {
 
   return (
     <div className="w-9/12 mx-auto my-16">
-      <div className="grid md:grid-cols-3 gap-10">
+      <div>
         {myReviews.length <= 0 ? (
           <>
             <p className="text-2xl font-bold text-red-600 text-center">
@@ -72,14 +74,54 @@ const MyReviews = () => {
           </>
         ) : (
           <>
-            {myReviews?.map((myReview) => (
-              <DisplayMyReviews
-                key={myReview._id}
-                myReview={myReview}
-                handleDelete={handleDelete}
-                handleMyReviewEdit={handleMyReviewEdit}
-              ></DisplayMyReviews>
-            ))}
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                {/* head */}
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Food Name</th>
+                    <th>Review</th>
+                    <th>Ratings</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {myReviews?.map((myReview, idx) => {
+                    return (
+                      <>
+                        <tr>
+                          <th>{idx + 1}</th>
+                          <td>{myReview?.foodName}</td>
+                          <td>{myReview?.review}</td>
+                          <td>{myReview?.ratings}</td>
+                          <td>
+                            <div className="flex gap-5 items-center">
+                              <button>
+                                <div className="flex items-center gap-2">
+                                  <FaEdit></FaEdit>
+                                  <p>Edit</p>
+                                </div>
+                              </button>
+                              <button>
+                                {" "}
+                                <div
+                                  onClick={() => handleDelete(myReview?._id)}
+                                  className="flex items-center gap-2"
+                                >
+                                  <FaTrash></FaTrash>
+                                  <p>Delete</p>
+                                </div>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </>
         )}
       </div>

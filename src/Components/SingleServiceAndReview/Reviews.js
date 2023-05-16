@@ -4,14 +4,20 @@ const Reviews = ({ reviews, handleDelete }) => {
   const { ratings, review, displayName, photoURL } = reviews;
 
   return (
-    <div className="bg-gray-100 p-5 shadow-xl my-5">
+    <div className="mb-4">
       <div className="flex justify-between items-center">
-        <div>
-          <img src={photoURL} alt="" className="h-16 rounded-full" />
-          <h2 className="text-2xl font-bold">{displayName}</h2>
-          <h2 className="text-xl font-semibold"> Review : {review}</h2>
-          <p>Rating : {ratings}</p>
+        <div className="flex items-center gap-5">
+          <img src={photoURL} alt="" className="h-16 w-16  rounded-full" />
+          <div>
+            <h2 className=" font-bold">{displayName}</h2>
+            <h2 className=" font-semibold"> {review}</h2>
+            <p>Rating : {ratings}</p>
+          </div>
         </div>
+      </div>
+      <div className="mt-3">
+        <hr></hr>
+        <hr></hr>
       </div>
     </div>
   );

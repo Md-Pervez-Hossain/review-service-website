@@ -4,20 +4,24 @@ import { Link } from "react-router-dom";
 const DisplayAllFoodsService = ({ foodService }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = foodService;
   return (
-    <div className="bg-gray-100 shadow-xl  p-4">
-      <div>
-        <img src={photoURL} alt="" className="w-full h-72" />
-      </div>
+    <div className="shadow-xl  p-4">
+      <div
+        style={{
+          backgroundImage: `url(${photoURL})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "200px",
+        }}
+      ></div>
       <div>
         <h2 className="text-3xl font-bold my-3">{foodName}</h2>
-        <p className="font-bold text-xl mb-3">
-          Price : <span className="font-normal text-xl mb-3"> {foodPrice}</span>
+        <p className="font-bold  mb-0 ">
+          Price : $ <span className="font-normal  "> {foodPrice}</span>
         </p>
-        <p>{foodDescription?.slice(0, 100) + "..."} </p>
+        <p className="mb-1">{foodDescription?.slice(0, 100) + "..."} </p>
         <Link to={`/allservice/${_id}`}>
-          <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
-            Details
-          </button>
+          <button className=" font-bold text-red-600  ">Read More</button>
         </Link>
       </div>
     </div>

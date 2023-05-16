@@ -12,6 +12,7 @@ import MyReviews from "./Components/MyReviews/MyReviews";
 import PrivateRoutes from "./Components/Routes/PrivateRoutes";
 import Signup from "./Components/Signup/Signup";
 import SingleServiceAndReview from "./Components/SingleServiceAndReview/SingleServiceAndReview";
+import CheckoutPage from "./Components/CheckoutPage/CheckoutPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -54,6 +55,13 @@ function App() {
         {
           path: "/blog",
           element: <Blog></Blog>,
+        },
+        {
+          path: "/checkout/:id",
+          loader: async ({ params }) => {
+            return fetch(`http://localhost:5000/singleFood/${params.id}`);
+          },
+          element: <CheckoutPage></CheckoutPage>,
         },
         {
           path: "/feedback",

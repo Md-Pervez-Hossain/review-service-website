@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Contact = () => {
+  const { user } = useContext(AuthContext);
   const [feedBack, setFeedBack] = useState("");
   // const [isLoading, setIsLoading] = useState(false);
 
   const handleFeedbackSubmit = (event) => {
     event.preventDefault();
     // setIsLoading(true);
+
+    const form = event.target;
+    const name = user?.displayName;
+    const email = user?.email;
+    const feedback = form.feedback.value;
+    const img = user?.photoURL;
+
+    const feedBackInfo = {
+      name,
+      email,
+      img,
+      feedback,
+    };
+
     fetch(
-      "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback",
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(feedBack),
+        body: JSON.stringify(feedBackInfo),
       }
     )
       .then((res) => res.json())
@@ -32,13 +48,6 @@ const Contact = () => {
       });
   };
 
-  const handleInputBlur = (event) => {
-    const field = event.target.name;
-    const value = event.target.value;
-    const newFeedBack = { ...feedBack };
-    newFeedBack[field] = value;
-    setFeedBack(newFeedBack);
-  };
   return (
     <div className="bg-gray-100 my-16">
       <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
@@ -60,10 +69,11 @@ const Contact = () => {
         >
           <div>
             <input
-              onBlur={handleInputBlur}
               id="name"
               type="text"
               name="name"
+              defaultValue={user?.displayName}
+              readOnly
               placeholder="Name"
               required
               className="w-full p-3 rounded dark:bg-gray-800"
@@ -71,10 +81,11 @@ const Contact = () => {
           </div>
           <div>
             <input
-              onBlur={handleInputBlur}
               id="email"
               type="email"
               name="email"
+              defaultValue={user?.email}
+              readOnly
               placeholder="Email"
               required
               className="w-full p-3 rounded dark:bg-gray-800"
@@ -82,9 +93,7 @@ const Contact = () => {
           </div>
           <div>
             <textarea
-              onBlur={handleInputBlur}
               id="feedback"
-              rows="7"
               name="feedback"
               placeholder="Your FeedBack"
               required
