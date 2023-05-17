@@ -59,7 +59,9 @@ function App() {
         {
           path: "/checkout/:id",
           loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/singleFood/${params.id}`);
+            return fetch(
+              `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/singleFood/${params.id}`
+            );
           },
           element: <CheckoutPage></CheckoutPage>,
         },
