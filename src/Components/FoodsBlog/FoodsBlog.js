@@ -37,13 +37,16 @@ const FoodsBlog = () => {
           img: user?.photoURL,
         };
 
-        fetch("http://localhost:5000/foodsBlog", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(FoodsBlogInfo),
-        })
+        fetch(
+          "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/foodsBlog",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(FoodsBlogInfo),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

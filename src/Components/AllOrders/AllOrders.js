@@ -17,9 +17,12 @@ const AllOrders = () => {
       `Are you Sure . You Want to Approve the Order`
     );
     if (agree) {
-      fetch(`http://localhost:5000/orders/${order?._id}`, {
-        method: "PUT",
-      })
+      fetch(
+        `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders/${order?._id}`,
+        {
+          method: "PUT",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount > 0) {
@@ -34,7 +37,9 @@ const AllOrders = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders"
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

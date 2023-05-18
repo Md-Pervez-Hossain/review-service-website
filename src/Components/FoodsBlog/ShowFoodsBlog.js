@@ -4,7 +4,9 @@ import DisplayFoodsBlog from "./DisplayFoodsBlog";
 const ShowFoodsBlog = () => {
   const [foodsBlog, setFoodsBlog] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/foodsBlog")
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/foodsBlog"
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

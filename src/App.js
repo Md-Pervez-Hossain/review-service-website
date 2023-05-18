@@ -60,7 +60,9 @@ function App() {
         {
           path: "/orders",
           loader: async () => {
-            return fetch("http://localhost:5000/orders");
+            return fetch(
+              "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders"
+            );
           },
           element: <AllOrders></AllOrders>,
         },
@@ -75,7 +77,7 @@ function App() {
           path: "/payment/success/:transactionId",
           loader: async ({ params }) => {
             return fetch(
-              `http://localhost:5000/payment/success/${params.transactionId}`
+              `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/payment/success/${params.transactionId}`
             );
           },
           element: <PaymentSuccess></PaymentSuccess>,
@@ -87,7 +89,9 @@ function App() {
         {
           path: "/Foodsblog/:id",
           loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/foodsBlog/${params.id}`);
+            return fetch(
+              `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/foodsBlog/${params.id}`
+            );
           },
           element: <SingleFoodsBlog></SingleFoodsBlog>,
         },
