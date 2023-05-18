@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import AddService from "./Components/AddService/AddService";
 import AllFoodsService from "./Components/AllFoodsService/AllFoodsService";
-import Blog from "./Components/Blog/Blog";
+import Blog from "./Components/FoodsBlog/FoodsBlog";
 import ClientFeedback from "./Components/ClientFeddback/ClientFeedback";
 import Home from "./Components/Home/Home";
 import Main from "./Components/Layout/Main";
@@ -13,6 +13,11 @@ import PrivateRoutes from "./Components/Routes/PrivateRoutes";
 import Signup from "./Components/Signup/Signup";
 import SingleServiceAndReview from "./Components/SingleServiceAndReview/SingleServiceAndReview";
 import CheckoutPage from "./Components/CheckoutPage/CheckoutPage";
+import FoodsBlog from "./Components/FoodsBlog/FoodsBlog";
+import SingleFoodsBlog from "./Components/FoodsBlog/SingleFoodsBlog";
+import PaymentSuccess from "./Components/PaymentSuccess/PaymentSuccess";
+import AllOrders from "./Components/AllOrders/AllOrders";
+import MyOrders from "./Components/MyOrders/MyOrders";
 
 function App() {
   const router = createBrowserRouter([
@@ -53,8 +58,38 @@ function App() {
           element: <Signup></Signup>,
         },
         {
-          path: "/blog",
-          element: <Blog></Blog>,
+          path: "/orders",
+          loader: async () => {
+            return fetch("http://localhost:5000/orders");
+          },
+          element: <AllOrders></AllOrders>,
+        },
+        {
+          path: "/orders/:cus_email",
+          // loader: async ({ params }) => {
+          //   return fetch(`http://localhost:5000/orders/${params.cus_email}`);
+          // },
+          element: <MyOrders></MyOrders>,
+        },
+        {
+          path: "/payment/success/:transactionId",
+          loader: async ({ params }) => {
+            return fetch(
+              `http://localhost:5000/payment/success/${params.transactionId}`
+            );
+          },
+          element: <PaymentSuccess></PaymentSuccess>,
+        },
+        {
+          path: "/Foodsblog",
+          element: <FoodsBlog></FoodsBlog>,
+        },
+        {
+          path: "/Foodsblog/:id",
+          loader: async ({ params }) => {
+            return fetch(`http://localhost:5000/foodsBlog/${params.id}`);
+          },
+          element: <SingleFoodsBlog></SingleFoodsBlog>,
         },
         {
           path: "/checkout/:id",

@@ -42,17 +42,17 @@ const Header = () => {
               Company
             </span>
           </a>
-          <ul className="flex items-center hidden space-x-8 lg:flex font-semibold text-[20px]">
+          <ul className="flex items-center hidden space-x-6 lg:flex font-semibold text-[20px]">
             {user?.uid && user?.email ? (
               <>
                 <NavLink to="/">
-                  <li>Home</li>
+                  <li className="font-bold">Home</li>
                 </NavLink>
                 <NavLink to="/">
-                  <li>About</li>
+                  <li className="font-bold">About</li>
                 </NavLink>
                 <NavLink to="/">
-                  <li>Contact</li>
+                  <li className="font-bold">Contact</li>
                 </NavLink>{" "}
                 <div className="dropdown  dropdown-end">
                   <label tabIndex={0}>
@@ -64,23 +64,39 @@ const Header = () => {
                   </label>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content bg-gray-100 p-4 w-52  rounded-lg  mt-3"
+                    className="dropdown-content bg-gray-100 px-8 py-2 w-72  rounded-lg  mt-3"
                   >
                     <NavLink to="/myreviews">
                       <li className="mb-3">{user?.displayName}</li>
                     </NavLink>
-                    <NavLink to="/myreviews">
-                      <li className="mb-3">All Reviews</li>
-                    </NavLink>
-                    <NavLink to="/addservice">
-                      <li className="mb-3">Add Service</li>
-                    </NavLink>
-                    <NavLink to="/feedback">
-                      <li className="mb-3">Clients FeedBack</li>
-                    </NavLink>
-                    <NavLink to="/login" onClick={() => handleLogout()}>
-                      <li className="mb-3">Signout</li>
-                    </NavLink>
+                    {user?.email === "p.hossain9254@gmail.com" ? (
+                      <>
+                        <NavLink to="/myreviews">
+                          <li className="mb-3">All Reviews</li>
+                        </NavLink>
+                        <NavLink to="/addservice">
+                          <li className="mb-3">Add Service</li>
+                        </NavLink>
+                        <NavLink to="/foodsblog">
+                          <li className="mb-3">Add A Blog</li>
+                        </NavLink>
+                        <NavLink to="/orders">
+                          <li className="mb-3">All Orders</li>
+                        </NavLink>
+                        <NavLink to="/login" onClick={() => handleLogout()}>
+                          <li className="mb-3">Signout</li>
+                        </NavLink>
+                        <NavLink to="/feedback">
+                          <li className="mb-3">Clients FeedBack</li>
+                        </NavLink>
+                      </>
+                    ) : (
+                      <>
+                        <NavLink to={`/orders/${user?.email}`}>
+                          <li className="mb-3">My Orders</li>
+                        </NavLink>
+                      </>
+                    )}
                   </ul>
                 </div>
               </>
@@ -196,6 +212,9 @@ const Header = () => {
                               </NavLink>
                               <NavLink to="/addservice">
                                 <li className="mb-3">Add Service</li>
+                              </NavLink>
+                              <NavLink to="/foodsBlog">
+                                <li className="mb-3">Add A Blog</li>
                               </NavLink>
                               <NavLink to="/feedback">
                                 <li className="mb-3">Clients FeedBack</li>

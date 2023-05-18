@@ -7,6 +7,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const SingleServiceAndReview = () => {
   const [allReviews, setAllReviews] = useState([]);
+
   const [previous, setPrevious] = useState(0);
   const [next, setNext] = useState(3);
   //   const [reviews, setReviews] = useState("");
@@ -83,7 +84,7 @@ const SingleServiceAndReview = () => {
   return (
     <div className="md:w-9/12 mx-auto my-16 p-4">
       <div className="grid md:grid-cols-2 gap-10">
-        <div>
+        <div className="bg-white p-4 shadow-lg">
           <div>
             <img src={photoURL} alt="" />
           </div>
@@ -94,12 +95,25 @@ const SingleServiceAndReview = () => {
               <span className="font-normal text-xl mb-3"> {foodPrice} BDT</span>
             </p>
             <p>{foodDescription} </p>
+            {user?.email ? (
+              <>
+                {" "}
+                <Link to={`/checkout/${_id}`}>
+                  <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
+                    Order Now
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link>
+                  <p className="text-2xl font-bold my-3 text-red-600">
+                    Please Log in For Order
+                  </p>
+                </Link>
+              </>
+            )}
 
-            <Link to={`/checkout/${_id}`}>
-              <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
-                Order Now
-              </button>
-            </Link>
             <Link to="/allservice">
               <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white ml-3">
                 Order Cancel

@@ -1,12 +1,11 @@
 import React from "react";
 import Contact from "../Contact/Contact";
-import DiscountBanner from "../DiscountBanner/DiscountBanner";
-import FoodBlog from "../FoodBlog/FoodBlog";
 
 import HeroBanner from "../HeroBanner/HeroBanner";
 import FoodsCategory from "../FoodsCategory/FoodsCategory";
 import ClientFeedback from "../ClientFeddback/ClientFeedback";
-import FoodsBolg from "../FoodsBlog/FoodsBolg";
+import UpcomingFoods from "../UpcomingFood/UpcommingFoods.js";
+import ShowFoodsBlog from "../FoodsBlog/ShowFoodsBlog";
 
 const Home = () => {
   document.title = "Home Page";
@@ -22,10 +21,10 @@ const Home = () => {
 
       <div>{/* <DiscountBanner></DiscountBanner> */}</div>
       <div>
-        <FoodBlog></FoodBlog>
+        <UpcomingFoods></UpcomingFoods>
       </div>
       <div>
-        <FoodsBolg></FoodsBolg>
+        <ShowFoodsBlog></ShowFoodsBlog>
       </div>
       <div>
         <ClientFeedback></ClientFeedback>

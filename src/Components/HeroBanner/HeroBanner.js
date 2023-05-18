@@ -3,7 +3,13 @@ import React from "react";
 const HeroBanner = () => {
   return (
     <div className="grid md:grid-cols-2 items-center gap-16">
-      <div>
+      <div
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-mirror="true"
+        data-aos-once="false"
+      >
         <span>Our Brnad Food</span>
         <h2 className="md:text-4xl text-2xl mb-5 mt-2 font-bold leading-relaxed">
           My Tasty and <span className="text-red-600">Delicious</span> Foods
@@ -19,14 +25,22 @@ const HeroBanner = () => {
         </button>
       </div>
       <div
-        style={{
-          backgroundImage: `url("https://purepng.com/public/uploads/large/purepng.com-chefcheftrained-professional-cookfood-preparationkitchenchefsexperienced-1421526669538jccuo.png")`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          height: "400px",
-        }}
-      ></div>
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-mirror="true"
+        data-aos-once="false"
+      >
+        <div
+          style={{
+            backgroundImage: `url("https://purepng.com/public/uploads/large/purepng.com-chefcheftrained-professional-cookfood-preparationkitchenchefsexperienced-1421526669538jccuo.png")`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "400px",
+          }}
+        ></div>
+      </div>
     </div>
   );
 };

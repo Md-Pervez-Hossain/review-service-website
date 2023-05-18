@@ -44,7 +44,7 @@ const AddService = () => {
     setFoodService(newService);
   };
   return (
-    <div className="md:w-1/2 mx-auto bg-yellow-300 my-16 p-4">
+    <div className="md:w-1/2 mx-auto  bg-gray-100 shadow-lg my-16 p-4">
       <div className="w-full  p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
         <h1 className="text-2xl font-bold text-center">
           Add Your Food Service
@@ -53,40 +53,42 @@ const AddService = () => {
           onSubmit={handleAddFoodService}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
-          <div className="space-y-1 text-sm">
-            <label
-              htmlFor="username"
-              className="block font-semibold text-xl mb-2 dark:text-gray-400"
-            >
-              Food Service Name
-            </label>
-            <input
-              onBlur={handleInputBlur}
-              type="text"
-              name="foodName"
-              id="foodName"
-              placeholder="Food Service Name"
-              required
-              className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
-            />
-          </div>
+          <div className="grid md:grid-cols-2 gap-10">
+            <div className="space-y-1 text-sm">
+              <label
+                htmlFor="username"
+                className="block font-semibold text-xl mb-2 dark:text-gray-400"
+              >
+                Food Service Name
+              </label>
+              <input
+                onBlur={handleInputBlur}
+                type="text"
+                name="foodName"
+                id="foodName"
+                placeholder="Food Service Name"
+                required
+                className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              />
+            </div>
 
-          <div className="space-y-1 text-sm">
-            <label
-              htmlFor="username"
-              className="block font-semibold text-xl mb-2 dark:text-gray-400"
-            >
-              Food Photo
-            </label>
-            <input
-              onBlur={handleInputBlur}
-              type="text"
-              name="photoURL"
-              id="photoURL"
-              placeholder="Photo URL"
-              required
-              className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
-            />
+            <div className="space-y-1 text-sm">
+              <label
+                htmlFor="username"
+                className="block font-semibold text-xl mb-2 dark:text-gray-400"
+              >
+                Food Photo
+              </label>
+              <input
+                onBlur={handleInputBlur}
+                type="text"
+                name="photoURL"
+                id="photoURL"
+                placeholder="Photo URL"
+                required
+                className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              />
+            </div>
           </div>
 
           <div className="space-y-1 text-sm">
@@ -118,8 +120,6 @@ const AddService = () => {
               onBlur={handleInputBlur}
               name="foodDescription"
               id=""
-              cols="30"
-              rows="10"
               placeholder="Food Description"
               required
               className="w-full  rounded-md px-5 py-8"

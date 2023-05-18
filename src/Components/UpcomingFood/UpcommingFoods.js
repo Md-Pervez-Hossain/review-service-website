@@ -7,12 +7,14 @@ import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
 import { foods } from "../UpcomingFoods/UpcomingFoods";
 
-const FoodBlog = () => {
+const UpcomingFoods = () => {
   return (
     <div>
-      <h2 className="md:text-4xl text-4xl font-bold  capitalize mb-8">
-        Upcomming Food
-      </h2>
+      <div className="mb-8 ">
+        <h2 className="md:text-4xl text-4xl font-bold  capitalize ">
+          Upcomming Food
+        </h2>
+      </div>
       <div>
         <Swiper
           modules={[Autoplay, Navigation]}
@@ -55,6 +57,11 @@ const FoodBlog = () => {
                       }}
                       className="bg-cover bg-center bg-no-repeat h-[200px]"
                     ></div>
+                    <div>
+                      <h2 className="text-center my-3 text-xl font-bold">
+                        {info?.name}
+                      </h2>
+                    </div>
                   </div>
                 </section>
               </SwiperSlide>
@@ -66,4 +73,4 @@ const FoodBlog = () => {
   );
 };
 
-export default FoodBlog;
+export default UpcomingFoods;

@@ -7,7 +7,14 @@ const DisplayServices = ({ serviceInfo }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
 
   return (
-    <div className=" p-4 shadow-xl ">
+    <div
+      className=" p-4 shadow-xl "
+      data-aos="fade-right"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-mirror="true"
+      data-aos-once="false"
+    >
       <div>
         <PhotoProvider>
           <PhotoView src={photoURL}>

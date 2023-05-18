@@ -50,13 +50,9 @@ const AllFoodsService = () => {
     <div className="md:w-9/12 mx-auto my-16 p-4">
       {isLoading ? (
         <>
-          <FadeLoader
-            color={"#f40b66"}
-            loading={isLoading}
-            size={50}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
+          <div className="flex justify-center items-center h-screen">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-red-600"></div>
+          </div>
         </>
       ) : (
         <>
