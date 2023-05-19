@@ -83,17 +83,20 @@ const Header = () => {
                         <NavLink to="/orders">
                           <li className="mb-3">All Orders</li>
                         </NavLink>
-                        <NavLink to="/login" onClick={() => handleLogout()}>
-                          <li className="mb-3">Signout</li>
-                        </NavLink>
                         <NavLink to="/feedback">
                           <li className="mb-3">Clients FeedBack</li>
+                        </NavLink>
+                        <NavLink to="/login" onClick={() => handleLogout()}>
+                          <li className="mb-3">Signout</li>
                         </NavLink>
                       </>
                     ) : (
                       <>
                         <NavLink to={`/orders/${user?.email}`}>
                           <li className="mb-3">My Orders</li>
+                        </NavLink>
+                        <NavLink to="/login" onClick={() => handleLogout()}>
+                          <li className="mb-3">Signout</li>
                         </NavLink>
                       </>
                     )}

@@ -22,10 +22,18 @@ const DisplayFoodsBlog = ({ foodBlog }) => {
         }}
       ></div>
       <div className="p-3">
-        <h2 className="text-xl mt-5 mb-3">{title ? <>{title}</> : <></>}</h2>
-        <p className="mb-2">{`${details?.slice(0, 70)} ...`}</p>
+        <h2 className="text-xl mt-5 mb-3 font-bold">
+          {title?.length >= 20 ? <>{`${title?.slice(0, 20)} ...`}</> : <></>}
+        </h2>
+        <p className="mb-2">
+          {details?.length >= 70 ? (
+            <>{`${details?.slice(0, 70)} ...`}</>
+          ) : (
+            <>{`${details}`}</>
+          )}
+        </p>
         <Link to={`/foodsBlog/${_id}`}>
-          <button>Read More</button>
+          <button className="font-bold">Read More</button>
         </Link>
       </div>
     </div>

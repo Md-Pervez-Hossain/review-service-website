@@ -39,13 +39,6 @@ const AllFoodsService = () => {
       });
   }, []);
 
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, [1000]);
-  }, []);
-
   return (
     <div className="md:w-9/12 mx-auto my-16 p-4">
       {isLoading ? (
