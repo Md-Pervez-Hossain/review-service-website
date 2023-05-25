@@ -10,7 +10,7 @@ import ShowFoodsBlog from "../FoodsBlog/ShowFoodsBlog";
 const Home = () => {
   document.title = "Home Page";
   return (
-    <div className="md:w-9/12 mx-auto  my-16 px-8 ">
+    <div className="md:w-9/12 mx-auto  my-16  ">
       <div className="my-16">
         <HeroBanner></HeroBanner>
       </div>

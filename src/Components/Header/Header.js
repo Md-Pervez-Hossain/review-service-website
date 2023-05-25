@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import logo from "../../assets/foodValey logo.png";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -14,46 +16,40 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 bg-gray-100 z-50 ">
-      <div class="md:w-9/12 mx-auto py-8 px-8 ">
+    <div className="sticky top-0 bg-white   z-50 ">
+      <div class="w-9/12 mx-auto py-4 ">
         <div class="relative flex items-center justify-between">
-          <a
-            href="/"
-            aria-label="Company"
-            title="Company"
-            class="inline-flex items-center"
-          >
-            <svg
-              class="w-8 text-deep-purple-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
-            >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
-            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-              Company
-            </span>
-          </a>
+          <Link to="/">
+            <img src={logo} alt="" className="h-16" />
+          </Link>
           <ul className="flex items-center hidden space-x-6 lg:flex font-semibold text-[20px]">
             {user?.uid && user?.email ? (
               <>
                 <NavLink to="/">
-                  <li className="font-bold">Home</li>
+                  <li className="font-bold hover:text-red-600 duration-500">
+                    Home
+                  </li>
                 </NavLink>
                 <NavLink to="/">
-                  <li className="font-bold">About</li>
+                  <li className="font-bold hover:text-red-600 duration-500">
+                    About
+                  </li>
                 </NavLink>
                 <NavLink to="/">
-                  <li className="font-bold">Contact</li>
-                </NavLink>{" "}
+                  <li className="font-bold hover:text-red-600 duration-500">
+                    Contact
+                  </li>
+                </NavLink>
+                <NavLink to="/cart">
+                  <li className="font-bold">
+                    <FaCartPlus className="hover:text-red-600 duration-500"></FaCartPlus>
+                  </li>
+                </NavLink>
+                <NavLink to="/wishlist">
+                  <li className="font-bold">
+                    <FaHeart className="hover:text-red-600 duration-500"></FaHeart>
+                  </li>
+                </NavLink>
                 <div className="dropdown  dropdown-end">
                   <label tabIndex={0}>
                     <img
@@ -64,39 +60,24 @@ const Header = () => {
                   </label>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content bg-gray-100 px-8 py-2 w-72  rounded-lg  mt-3"
+                    className="dropdown-content  bg-gray-100 px-8 py-2 w-72  rounded-lg  mt-3"
                   >
-                    <NavLink to="/myreviews">
-                      <li className="mb-3">{user?.displayName}</li>
+                    <NavLink>
+                      <p className="mb-3 font-bold">{user?.displayName}</p>
+                    </NavLink>
+                    <NavLink to="/dashboard">
+                      <p className="mb-3 font-bold">Dashboard</p>
                     </NavLink>
                     {user?.email === "p.hossain9254@gmail.com" ? (
                       <>
-                        <NavLink to="/myreviews">
-                          <li className="mb-3">All Reviews</li>
-                        </NavLink>
-                        <NavLink to="/addservice">
-                          <li className="mb-3">Add Service</li>
-                        </NavLink>
-                        <NavLink to="/foodsblog">
-                          <li className="mb-3">Add A Blog</li>
-                        </NavLink>
-                        <NavLink to="/orders">
-                          <li className="mb-3">All Orders</li>
-                        </NavLink>
-                        <NavLink to="/feedback">
-                          <li className="mb-3">Clients FeedBack</li>
-                        </NavLink>
                         <NavLink to="/login" onClick={() => handleLogout()}>
-                          <li className="mb-3">Signout</li>
+                          <li className="mb-3 font-bold">Signout</li>
                         </NavLink>
                       </>
                     ) : (
                       <>
-                        <NavLink to={`/orders/${user?.email}`}>
-                          <li className="mb-3">My Orders</li>
-                        </NavLink>
                         <NavLink to="/login" onClick={() => handleLogout()}>
-                          <li className="mb-3">Signout</li>
+                          <li className="mb-3 font-bold">Signout</li>
                         </NavLink>
                       </>
                     )}
@@ -140,31 +121,9 @@ const Header = () => {
                 <div class="p-5 bg-white border rounded shadow-sm">
                   <div class="flex items-center justify-between mb-4">
                     <div>
-                      <a
-                        href="/"
-                        aria-label="Company"
-                        title="Company"
-                        class="inline-flex items-center"
-                      >
-                        <svg
-                          class="w-8 text-deep-purple-accent-400"
-                          viewBox="0 0 24 24"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeMiterlimit="10"
-                          stroke="currentColor"
-                          fill="none"
-                        >
-                          <rect x="3" y="1" width="7" height="12" />
-                          <rect x="3" y="17" width="7" height="6" />
-                          <rect x="14" y="1" width="7" height="6" />
-                          <rect x="14" y="11" width="7" height="12" />
-                        </svg>
-                        <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                          Company
-                        </span>
-                      </a>
+                      <Link to="/">
+                        <img src={logo} alt="" className="h-16" />
+                      </Link>
                     </div>
                     <div>
                       <button
@@ -207,20 +166,13 @@ const Header = () => {
                               tabIndex={0}
                               className="dropdown-content bg-gray-100 p-4 w-52  rounded-lg  mt-3"
                             >
-                              <NavLink to="/myreviews">
-                                <li className="mb-3">{user?.displayName}</li>
+                              <NavLink>
+                                <p className="mb-3 font-bold">
+                                  {user?.displayName}
+                                </p>
                               </NavLink>
-                              <NavLink to="/myreviews">
-                                <li className="mb-3">All Reviews</li>
-                              </NavLink>
-                              <NavLink to="/addservice">
-                                <li className="mb-3">Add Service</li>
-                              </NavLink>
-                              <NavLink to="/foodsBlog">
-                                <li className="mb-3">Add A Blog</li>
-                              </NavLink>
-                              <NavLink to="/feedback">
-                                <li className="mb-3">Clients FeedBack</li>
+                              <NavLink to="/dashboard">
+                                <p className="mb-3 font-bold">Dashboard</p>
                               </NavLink>
                               <NavLink
                                 to="/login"

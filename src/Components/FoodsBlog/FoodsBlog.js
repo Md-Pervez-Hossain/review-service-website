@@ -68,7 +68,7 @@ const FoodsBlog = () => {
       });
   };
   return (
-    <div className="md:w-1/2 mx-auto my-16 p-4">
+    <div className=" my-16 p-4">
       {loading ? (
         <>
           <div className="flex justify-center items-center h-screen">
@@ -97,7 +97,9 @@ const FoodsBlog = () => {
               placeholder="Details"
               name="details"
             ></textarea>
-            <button className="btn w-full mt-4">Submit Blog</button>
+            <button className=" px-4 py-3 font-bold rounded-md w-full mt-4 bg-red-600 text-white">
+              Submit Blog
+            </button>
           </form>
         </>
       )}

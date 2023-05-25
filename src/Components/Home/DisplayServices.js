@@ -1,11 +1,32 @@
 import React from "react";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Link } from "react-router-dom";
 
 const DisplayServices = ({ serviceInfo }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
-
+  const handleCart = (serviceInfo) => {
+    console.log(serviceInfo);
+    const cartInfo = {
+      ...serviceInfo,
+      quantity: 0,
+    };
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cartInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div
       className=" p-4 shadow-xl "
@@ -32,34 +53,45 @@ const DisplayServices = ({ serviceInfo }) => {
       </div>
       <div>
         <div>
-          <h2 className="text-xl font-bold mt-3 mb-2 ">
-            {foodName?.length >= 10 ? (
-              <>{`${foodName.slice(0, 10)} ...`}</>
-            ) : (
-              <>{foodName}</>
-            )}
-          </h2>
-          <div className="mb-2">
-            <p className="font-bold mb-0  ">
-              Price : $ <span className="font-normal "> {foodPrice}</span>
-            </p>
-            <p>
-              {foodDescription.length >= 70 ? (
-                <>
-                  <p className="mb-0">
-                    {foodDescription?.slice(0, 70) + " ..."}
-                  </p>
-                </>
+          <div>
+            <h2 className="text-xl font-bold mt-3 mb-2 ">
+              {foodName?.length >= 10 ? (
+                <>{`${foodName.slice(0, 10)} ...`}</>
               ) : (
-                <>
-                  <p className="mb-0">{foodDescription}</p>
-                </>
+                <>{foodName}</>
               )}
-            </p>
+            </h2>
+            <div className="mb-2">
+              <p className="font-bold mb-0  ">
+                Price : $ <span className="font-normal "> {foodPrice}</span>
+              </p>
+              <p>
+                {foodDescription.length >= 70 ? (
+                  <>
+                    <p className="mb-0">
+                      {foodDescription?.slice(0, 70) + " ..."}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="mb-0">{foodDescription}</p>
+                  </>
+                )}
+              </p>
+            </div>
           </div>
-          <Link to={`/allservice/${_id}`}>
-            <button className=" font-bold text-red-600 ">Read More </button>
-          </Link>
+          <div className="flex justify-between">
+            <div>
+              {" "}
+              <Link to={`/allservice/${_id}`}>
+                <button className=" font-bold text-red-600 ">Read More </button>
+              </Link>
+            </div>
+            <div className="flex items-center gap-3 cursor-pointer">
+              <FaCartPlus onClick={() => handleCart(serviceInfo)}></FaCartPlus>
+              <FaHeart></FaHeart>
+            </div>
+          </div>
         </div>
       </div>
     </div>

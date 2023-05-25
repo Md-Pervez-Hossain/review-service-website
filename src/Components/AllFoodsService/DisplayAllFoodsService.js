@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const DisplayAllFoodsService = ({ foodService }) => {
@@ -20,9 +21,17 @@ const DisplayAllFoodsService = ({ foodService }) => {
           Price : $ <span className="font-normal  "> {foodPrice}</span>
         </p>
         <p className="mb-1">{foodDescription?.slice(0, 100) + "..."} </p>
-        <Link to={`/allservice/${_id}`}>
-          <button className=" font-bold text-red-600  ">Read More</button>
-        </Link>
+        <div className="flex justify-between items-center">
+          <div>
+            <Link to={`/allservice/${_id}`}>
+              <button className=" font-bold text-red-600  ">Read More</button>
+            </Link>
+          </div>
+          <div className="flex items-center gap-3 cursor-pointer">
+            <FaCartPlus></FaCartPlus>
+            <FaHeart></FaHeart>
+          </div>
+        </div>
       </div>
     </div>
   );

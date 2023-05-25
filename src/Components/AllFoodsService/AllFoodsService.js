@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import DisplayAllFoodsService from "./DisplayAllFoodsService";
-import { FadeLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -9,7 +8,7 @@ const AllFoodsService = () => {
   // const foodsService = useLoaderData();
   const [fooodService, setFooodService] = useState([]);
   document.title = "All Foods Service Page";
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [previous, setPrevious] = useState(0);
   const [next, setNext] = useState(6);
   //   const [reviews, setReviews] = useState("");
@@ -26,6 +25,7 @@ const AllFoodsService = () => {
     setNext(next + 6);
   };
   useEffect(() => {
+    setLoading(true);
     fetch(
       "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices"
     )
@@ -33,9 +33,11 @@ const AllFoodsService = () => {
       .then((data) => {
         console.log(data);
         setFooodService(data);
+        setLoading(false);
       })
       .catch((error) => {
         toast.error(error.message, { autoClose: 500 });
+        setLoading(false);
       });
   }, []);
 

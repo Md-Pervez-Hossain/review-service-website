@@ -8,7 +8,9 @@ import { toast } from "react-toastify";
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
+
   document.title = "Signup Page";
+
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (event) => {
@@ -16,28 +18,67 @@ const Signup = () => {
     setIsLoading(true);
     const form = event.target;
     const username = form.username.value;
-    const photoURL = form.photoURL.value;
     const email = form.email.value;
-    const password = form.password.value;
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        setIsLoading(false);
-        updateUserProfile(username, photoURL)
-          .then(() => {})
-          .catch(() => {});
-        if (user?.uid) {
-          toast.success("User SuccessFully Created", { autoClose: 500 });
-          form.reset();
-          navigate("/");
-        }
-        console.log(user);
+    const userPassword = form.password.value;
+
+    const image = form.image.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    fetch(
+      "https://api.imgbb.com/1/upload?key=86fe1764d78f51c15b1a9dfe4b9175cf",
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const image = data?.data?.display_url;
+        createUser(email, userPassword)
+          .then((result) => {
+            const user = result.user;
+            updateUserProfile(username, image)
+              .then(() => {
+                const newUser = {
+                  username,
+                  email,
+                  role: "user",
+                  image,
+                };
+                fetch("http://localhost:5000/users", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(newUser),
+                })
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log("New user created:", data);
+                    setIsLoading(false);
+                    toast.success("User SuccessFully Created");
+                    form.reset();
+                    navigate("/");
+                    console.log(user);
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
+                    // Handle errors
+                    setIsLoading(false);
+                  });
+              })
+              .catch(() => {});
+          })
+          .catch((error) => {
+            toast.error(error.message, { autoClose: 500 });
+            setIsLoading(false);
+          });
       })
       .catch((error) => {
-        toast.error(error.message, { autoClose: 500 });
+        console.log(error);
         setIsLoading(false);
       });
-    console.log(username, photoURL, email, password);
   };
 
   return (
@@ -49,9 +90,6 @@ const Signup = () => {
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-1 text-sm">
-            <label htmlFor="username" className="block dark:text-gray-400">
-              Username
-            </label>
             <input
               type="text"
               name="username"
@@ -62,22 +100,9 @@ const Signup = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label htmlFor="username" className="block dark:text-gray-400">
-              PhotoURL
-            </label>
-            <input
-              type="text"
-              name="photoURL"
-              id="photoURL"
-              placeholder="photoURL"
-              required
-              className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
-            />
+            <input type="file" name="image" className="file-input w-full " />
           </div>
           <div className="space-y-1 text-sm">
-            <label htmlFor="username" className="block dark:text-gray-400">
-              Email
-            </label>
             <input
               type="email"
               name="email"
@@ -88,9 +113,6 @@ const Signup = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label htmlFor="password" className="block dark:text-gray-400">
-              Password
-            </label>
             <input
               type="password"
               name="password"
@@ -100,6 +122,7 @@ const Signup = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
+
           {isLoading ? (
             <>
               <FadeLoader

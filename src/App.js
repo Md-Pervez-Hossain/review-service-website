@@ -18,6 +18,10 @@ import SingleFoodsBlog from "./Components/FoodsBlog/SingleFoodsBlog";
 import PaymentSuccess from "./Components/PaymentSuccess/PaymentSuccess";
 import AllOrders from "./Components/AllOrders/AllOrders";
 import MyOrders from "./Components/MyOrders/MyOrders";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import DashboadCommon from "./Components/Dashboard/DashboadCommon";
+import Cartpage from "./Components/Cartpage/Cartpage";
+import Wishlistpage from "./Components/Wishlistpage/Wishlistpage";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,18 +32,10 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
-          // loader: () =>
-          //   fetch(
-          //     "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservice"
-          //   ),
         },
         {
           path: "/allservice",
           element: <AllFoodsService></AllFoodsService>,
-          // loader: () =>
-          //   fetch(
-          //     "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/addservices"
-          //   ),
         },
         {
           path: "/allservice/:id",
@@ -54,25 +50,14 @@ function App() {
           element: <Login></Login>,
         },
         {
-          path: "/signup",
-          element: <Signup></Signup>,
+          path: "/cart",
+          element: <Cartpage></Cartpage>,
         },
         {
-          path: "/orders",
-          loader: async () => {
-            return fetch(
-              "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders"
-            );
-          },
-          element: <AllOrders></AllOrders>,
+          path: "/wishlist",
+          element: <Wishlistpage></Wishlistpage>,
         },
-        {
-          path: "/orders/:cus_email",
-          // loader: async ({ params }) => {
-          //   return fetch(`http://localhost:5000/orders/${params.cus_email}`);
-          // },
-          element: <MyOrders></MyOrders>,
-        },
+
         {
           path: "/payment/success/:transactionId",
           loader: async ({ params }) => {
@@ -82,10 +67,7 @@ function App() {
           },
           element: <PaymentSuccess></PaymentSuccess>,
         },
-        {
-          path: "/Foodsblog",
-          element: <FoodsBlog></FoodsBlog>,
-        },
+
         {
           path: "/Foodsblog/:id",
           loader: async ({ params }) => {
@@ -107,10 +89,6 @@ function App() {
         {
           path: "/feedback",
           element: <ClientFeedback></ClientFeedback>,
-          // loader: () =>
-          //   fetch(
-          //     "b6a11-service-review-server-side-md-pervez-hossain.vercel.app/feedback"
-          //   ),
         },
         {
           path: "/reviewss/:id",
@@ -135,6 +113,41 @@ function App() {
               <AddService></AddService>
             </PrivateRoutes>
           ),
+        },
+      ],
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard></Dashboard>,
+      children: [
+        {
+          path: "/dashboard",
+          element: <DashboadCommon></DashboadCommon>,
+        },
+        {
+          path: "/dashboard/addservice",
+          element: (
+            <PrivateRoutes>
+              <AddService></AddService>
+            </PrivateRoutes>
+          ),
+        },
+        {
+          path: "/dashboard/orders",
+          loader: async () => {
+            return fetch(
+              "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders"
+            );
+          },
+          element: <AllOrders></AllOrders>,
+        },
+        {
+          path: "/dashboard/Foodsblog",
+          element: <FoodsBlog></FoodsBlog>,
+        },
+        {
+          path: "/dashboard/orders/:cus_email",
+          element: <MyOrders></MyOrders>,
         },
       ],
     },
