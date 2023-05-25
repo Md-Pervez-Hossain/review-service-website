@@ -78,12 +78,7 @@ function App() {
           element: <SingleFoodsBlog></SingleFoodsBlog>,
         },
         {
-          path: "/checkout/:id",
-          loader: async ({ params }) => {
-            return fetch(
-              `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/singleFood/${params.id}`
-            );
-          },
+          path: "/checkout",
           element: <CheckoutPage></CheckoutPage>,
         },
         {

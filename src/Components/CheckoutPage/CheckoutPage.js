@@ -2,15 +2,39 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useEffect } from "react";
 
 const CheckoutPage = () => {
   const [loading, setLoading] = useState(false);
+  const [cartProduct, setCartProduct] = useState([]);
   const { user } = useContext(AuthContext);
   const [infoDisplay, setInfoDisplay] = useState(true);
   const { register, handleSubmit, getValues, watch, reset } = useForm();
-  const serviceInfo = useLoaderData();
 
-  console.log(serviceInfo);
+  useEffect(() => {
+    fetch("http://localhost:5000/cart")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCartProduct(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  let totalPrice = parseInt(0);
+  let foodId = "";
+  let productName = "";
+  for (let products of cartProduct) {
+    const price = parseInt(products.foodPrice);
+    totalPrice = totalPrice + price;
+    const id = products?._id;
+    foodId = foodId + "  " + id;
+    const name = products?.foodName;
+    productName = productName + "  " + name;
+  }
+
   const handleGetValues = () => {
     if (watch("shippingInfo") === false) {
       setInfoDisplay(false);
@@ -29,36 +53,28 @@ const CheckoutPage = () => {
       myData.ship_state = myData.cus_state;
       myData.ship_postcode = myData.cus_postcode;
     }
-    const date = new Date().toLocaleDateString();
-    const FoodsId = serviceInfo?._id;
-    const FoodsName = serviceInfo?.foodName;
-    const foodPrice = serviceInfo?.foodPrice;
     setInfoDisplay(true);
-    reset();
-    // console.log(myData);
+    console.log(myData);
     const ordersInfo = {
       ...myData,
-      date,
-      FoodsId,
-      FoodsName,
-      foodPrice,
+      totalPrice,
+      foodId,
+      productName,
       status: false,
     };
-    console.log(ordersInfo);
-
-    fetch(
-      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(ordersInfo),
-      }
-    )
+    console.log(myData);
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(ordersInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        reset();
+
         window.location.replace(data.url);
       })
       .catch((error) => {
@@ -67,8 +83,8 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="w-9/12 mx-auto my-16">
-      <div className="grid md:grid-cols-2 items-center gap-16 border border-white">
+    <div className="w-1/2 mx-auto my-16">
+      <div>
         <div>
           <form onSubmit={handleSubmit(myOnSubmit)}>
             <div>
@@ -245,7 +261,6 @@ const CheckoutPage = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className="md:col-span-3 border border-white">
                   <button className="px-6 py-4 mt-5 w-full rounded-lg bg-red-600 text-white font-semibold">
                     Place Order
@@ -254,29 +269,6 @@ const CheckoutPage = () => {
               </div>
             </div>
           </form>
-        </div>
-
-        <div>
-          <div>
-            <div
-              style={{
-                backgroundImage: `url(${serviceInfo?.photoURL})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                height: "400px",
-              }}
-            ></div>
-            <div>
-              <h2 className="mt-5 mb-2 text-2xl font-bold">
-                {serviceInfo?.foodName}
-              </h2>
-              <h2 className="font-bold">
-                Price :{" "}
-                <span className="font-normal">{`${serviceInfo?.foodPrice}   BDT`}</span>{" "}
-              </h2>
-            </div>
-          </div>
         </div>
       </div>
     </div>

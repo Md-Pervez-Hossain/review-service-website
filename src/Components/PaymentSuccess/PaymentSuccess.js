@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 const PaymentSuccess = () => {
   const foodsOrderInfo = useLoaderData();
   console.log(foodsOrderInfo);
-  const { FoodsName, paidAt, transactionId, foodPrice } = foodsOrderInfo;
+  const { productName, paidAt, transactionId, totalPrice } = foodsOrderInfo;
   return (
     <div className="w-9/12 mx-auto my-16">
       <h2 className="text-2xl font-bold my-5">
@@ -23,10 +23,10 @@ const PaymentSuccess = () => {
           </thead>
           <tbody>
             <tr>
-              <td>{FoodsName}</td>
+              <td>{productName}</td>
               <td>{paidAt}</td>
               <td>{transactionId}</td>
-              <td>{foodPrice} BDT</td>
+              <td>{totalPrice} BDT</td>
             </tr>
           </tbody>
         </table>

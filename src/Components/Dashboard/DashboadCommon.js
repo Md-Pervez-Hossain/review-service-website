@@ -37,7 +37,7 @@ const DashboadCommon = () => {
     const totalAmount = parseInt(amount?.foodPrice);
     totalSell = totalSell + totalAmount;
   }
-
+  console.log(totalSell);
   return (
     <div>
       <div className="mb-5">

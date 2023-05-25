@@ -3,8 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import logo from "../../assets/foodValey logo.png";
 import { FaCartPlus, FaHeart } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Header = () => {
+  const [cartProduct, setCartProduct] = useState([]);
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +16,17 @@ const Header = () => {
       .then(() => {})
       .catch(() => {});
   };
-
+  useEffect(() => {
+    fetch(`http://localhost:5000/cart`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCartProduct(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="sticky top-0 bg-white   z-50 ">
       <div class="w-9/12 mx-auto py-4 ">
@@ -42,7 +54,10 @@ const Header = () => {
                 </NavLink>
                 <NavLink to="/cart">
                   <li className="font-bold">
-                    <FaCartPlus className="hover:text-red-600 duration-500"></FaCartPlus>
+                    <span className="ml-5 mb-[-50px]">
+                      {cartProduct?.length}
+                    </span>
+                    <FaCartPlus className="hover:text-red-600 mb-8 duration-500"></FaCartPlus>
                   </li>
                 </NavLink>
                 <NavLink to="/wishlist">

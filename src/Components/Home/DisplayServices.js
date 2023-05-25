@@ -3,6 +3,7 @@ import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const DisplayServices = ({ serviceInfo }) => {
   const { _id, foodName, photoURL, foodPrice, foodDescription } = serviceInfo;
@@ -10,9 +11,10 @@ const DisplayServices = ({ serviceInfo }) => {
     console.log(serviceInfo);
     const cartInfo = {
       ...serviceInfo,
-      quantity: 0,
+      quantity: 1,
+      status: false,
     };
-    fetch("http://localhost:5000/orders", {
+    fetch("http://localhost:5000/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,6 +24,9 @@ const DisplayServices = ({ serviceInfo }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.acknowledged) {
+          toast.success("Add To Cart");
+        }
       })
       .catch((error) => {
         console.log(error);

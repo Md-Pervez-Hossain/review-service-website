@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Reviews from "./Reviews";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaCartPlus, FaHeart } from "react-icons/fa";
 
 const SingleServiceAndReview = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -95,30 +95,11 @@ const SingleServiceAndReview = () => {
               <span className="font-normal text-xl mb-3"> {foodPrice} BDT</span>
             </p>
             <p>{foodDescription} </p>
-            {user?.email ? (
-              <>
-                {" "}
-                <Link to={`/checkout/${_id}`}>
-                  <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white">
-                    Order Now
-                  </button>
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link>
-                  <p className="text-2xl font-bold my-3 text-red-600">
-                    Please Log in For Order
-                  </p>
-                </Link>
-              </>
-            )}
+            <div className="flex items-center gap-3 mt-5 cursor-pointer">
+              <FaCartPlus></FaCartPlus>
 
-            <Link to="/allservice">
-              <button className="bg-red-600 font-bold text-xl px-5 py-3 my-3 text-white ml-3">
-                Order Cancel
-              </button>
-            </Link>
+              <FaHeart></FaHeart>
+            </div>
           </div>
         </div>
         <div>
