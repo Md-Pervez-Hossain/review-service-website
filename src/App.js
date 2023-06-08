@@ -22,6 +22,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import DashboadCommon from "./Components/Dashboard/DashboadCommon";
 import Cartpage from "./Components/Cartpage/Cartpage";
 import Wishlistpage from "./Components/Wishlistpage/Wishlistpage";
+import ContactInfo from "./Components/ContactInfo/ContactInfo";
 
 function App() {
   const router = createBrowserRouter([
@@ -48,6 +49,10 @@ function App() {
         {
           path: "/login",
           element: <Login></Login>,
+        },
+        {
+          path: "/contact",
+          element: <ContactInfo></ContactInfo>,
         },
         {
           path: "/cart",

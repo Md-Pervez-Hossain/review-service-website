@@ -6,6 +6,10 @@ import FoodsCategory from "../FoodsCategory/FoodsCategory";
 import ClientFeedback from "../ClientFeddback/ClientFeedback";
 import UpcomingFoods from "../UpcomingFood/UpcommingFoods.js";
 import ShowFoodsBlog from "../FoodsBlog/ShowFoodsBlog";
+import About from "../About/About";
+import FAQSection from "../FAQSection/FAQSection";
+import Transportation from "../Transportation/Transportation";
+import Chefs from "../Chefs/Chefs";
 
 const Home = () => {
   document.title = "Home Page";
@@ -14,7 +18,9 @@ const Home = () => {
       <div className="my-16">
         <HeroBanner></HeroBanner>
       </div>
-
+      <div className="my-32">
+        <About></About>
+      </div>
       <div className="my-16">
         <FoodsCategory></FoodsCategory>
       </div>
@@ -24,7 +30,16 @@ const Home = () => {
         <UpcomingFoods></UpcomingFoods>
       </div>
       <div>
+        <Transportation></Transportation>
+      </div>
+      <div>
         <ShowFoodsBlog></ShowFoodsBlog>
+      </div>
+      <div>
+        <FAQSection></FAQSection>
+      </div>
+      <div>
+        <Chefs></Chefs>
       </div>
       <div>
         <ClientFeedback></ClientFeedback>

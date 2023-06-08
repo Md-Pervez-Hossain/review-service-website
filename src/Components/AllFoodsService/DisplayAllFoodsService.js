@@ -29,6 +29,20 @@ const DisplayAllFoodsService = ({ foodService }) => {
       .catch((error) => {
         console.log(error);
       });
+    fetch(`http://localhost:5000/cart/${serviceInfo?._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cartInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="shadow-xl  p-4">

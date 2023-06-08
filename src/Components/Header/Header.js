@@ -47,8 +47,8 @@ const Header = () => {
                     About
                   </li>
                 </NavLink>
-                <NavLink to="/">
-                  <li className="font-bold hover:text-red-600 duration-500">
+                <NavLink to="/contact">
+                  <li className="font-bold  hover:text-red-600 duration-500">
                     Contact
                   </li>
                 </NavLink>

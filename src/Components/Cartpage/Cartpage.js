@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cartpage = () => {
   const [cartProduct, setCartProduct] = useState([]);
@@ -22,6 +23,29 @@ const Cartpage = () => {
     const amount = parseInt(price?.foodPrice);
     totalPrice = totalPrice + amount;
   }
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    const agree = window.confirm(`Are You Sure You Want to delete`);
+    if (agree) {
+      fetch(`http://localhost:5000/cart/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            toast.success("SuccessFully Deleted");
+            const remaining = cartProduct.filter(
+              (product) => product?._id !== _id
+            );
+            setCartProduct(remaining);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
   return (
     <div className="w-1/2 mx-auto my-16">
       <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
@@ -86,7 +110,9 @@ const Cartpage = () => {
                             ></rect>
                             <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
                           </svg>
-                          <span>Remove</span>
+                          <span onClick={() => handleDelete(product?._id)}>
+                            Remove
+                          </span>
                         </button>
                         <button
                           type="button"
