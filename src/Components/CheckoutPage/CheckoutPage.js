@@ -12,7 +12,9 @@ const CheckoutPage = () => {
   const { register, handleSubmit, getValues, watch, reset } = useForm();
 
   useEffect(() => {
-    fetch("http://localhost:5000/cart")
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/cart"
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -63,13 +65,16 @@ const CheckoutPage = () => {
       status: false,
     };
     console.log(myData);
-    fetch("http://localhost:5000/orders", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(ordersInfo),
-    })
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(ordersInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

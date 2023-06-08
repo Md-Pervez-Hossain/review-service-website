@@ -7,7 +7,9 @@ import { toast } from "react-toastify";
 const Cartpage = () => {
   const [cartProduct, setCartProduct] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/cart`)
+    fetch(
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/cart`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -28,9 +30,12 @@ const Cartpage = () => {
     console.log(_id);
     const agree = window.confirm(`Are You Sure You Want to delete`);
     if (agree) {
-      fetch(`http://localhost:5000/cart/${_id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/cart/${_id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {

@@ -10,7 +10,9 @@ const DashboadCommon = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/users"
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -21,7 +23,9 @@ const DashboadCommon = () => {
       });
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/orders"
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

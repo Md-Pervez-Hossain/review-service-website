@@ -12,13 +12,16 @@ const DisplayAllFoodsService = ({ foodService }) => {
       quantity: 1,
       status: false,
     };
-    fetch("http://localhost:5000/cart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(cartInfo),
-    })
+    fetch(
+      "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/cart",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -29,13 +32,16 @@ const DisplayAllFoodsService = ({ foodService }) => {
       .catch((error) => {
         console.log(error);
       });
-    fetch(`http://localhost:5000/cart/${serviceInfo?._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(cartInfo),
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/cart/${serviceInfo?._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

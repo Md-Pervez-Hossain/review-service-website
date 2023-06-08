@@ -46,13 +46,16 @@ const Signup = () => {
                   role: "user",
                   image,
                 };
-                fetch("http://localhost:5000/users", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(newUser),
-                })
+                fetch(
+                  "https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/users",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newUser),
+                  }
+                )
                   .then((response) => response.json())
                   .then((data) => {
                     console.log("New user created:", data);

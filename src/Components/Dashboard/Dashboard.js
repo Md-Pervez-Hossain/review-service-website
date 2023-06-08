@@ -18,7 +18,9 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/users/email/${user?.email}`)
+    fetch(
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/users/email/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

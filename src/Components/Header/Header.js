@@ -17,7 +17,9 @@ const Header = () => {
       .catch(() => {});
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/cart`)
+    fetch(
+      `https://b6a11-service-review-server-side-md-pervez-hossain.vercel.app/cart`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
